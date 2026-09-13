@@ -17,6 +17,9 @@
  */
 
 #include "ui/wui/mapview.h"
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#endif
 
 #include <cstdlib>
 
@@ -371,6 +374,17 @@ FieldsToDraw* MapView::draw_terrain(const Widelands::EditorGameBase& egbase,
                                     bool height_heat_map,
                                     bool grid,
                                     RenderTarget* dst) {
+#ifdef __EMSCRIPTEN__
+ if (get_parent() && get_parent()->get_name() == "interactive_base") {
+  const int dx = EM_ASM_INT({ const g=Module['mobileGesture']; if(!g)return 0; const v=g.dx; g.dx=0; return v; }, 0);
+  const int dy = EM_ASM_INT({ const g=Module['mobileGesture']; if(!g)return 0; const v=g.dy; g.dy=0; return v; }, 0);
+  const double ratio = EM_ASM_DOUBLE({ const g=Module['mobileGesture']; if(!g)return 1; const v=g.ratio; g.ratio=1; return v; }, 0);
+  if (dx || dy || ratio != 1) view_plans_.clear();
+  if (dx || dy) pan_by(Vector2i(-dx, -dy), Transition::Jump);
+  if (ratio > 0 && ratio != 1) zoom_around(view().zoom / ratio, Vector2f(get_w()/2.f, get_h()/2.f), Transition::Jump);
+  EM_ASM({ Module['mobileCamera']=({x:$0,y:$1,zoom:$2}); }, view().viewpoint.x, view().viewpoint.y, view().zoom);
+ }
+#endif
 	uint32_t now = SDL_GetTicks();
 	while (!view_plans_.empty()) {
 		auto& plan = view_plans_.front();
@@ -576,6 +590,8 @@ bool MapView::handle_mousemove(
 }
 
 void MapView::think() {
+
+
 	UI::Panel::think();
 	if (!dragging_ && (is_scrolling_x_ != 0 || is_scrolling_y_ != 0)) {
 		// We should be a child of the IBase

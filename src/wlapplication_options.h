@@ -487,3 +487,7 @@ void read_config();
 void write_config();
 
 #endif  // end of include guard: WL_WLAPPLICATION_OPTIONS_H
+
+#ifdef __EMSCRIPTEN__
+void mobile_publish_shortcuts();
+#endif

@@ -175,3 +175,9 @@ if (WIN32)
   target_link_libraries(widelands_ball_of_mud wsock32)
 #  set_target_properties(widelands PROPERTIES LINK_FLAGS_RELEASE -s)
 endif (WIN32)
+
+if(EMSCRIPTEN)
+  target_link_options(widelands PRIVATE
+    "-sFORCE_FILESYSTEM=1" "-lidbfs.js"
+    "-sEXPORTED_RUNTIME_METHODS=['FS','callMain']")
+endif()

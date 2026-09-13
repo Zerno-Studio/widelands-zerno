@@ -85,8 +85,21 @@ void set_logic_thread() {
 bool is_initializer_thread() {
 	return initializer_thread == std::this_thread::get_id();
 }
+#ifdef WL_WEB_SINGLE_THREAD
+static bool web_logic_active = false;
+void run_web_logic_tick(const std::function<void()>& fn) {
+ const bool previous = web_logic_active;
+ struct Restore { bool previous; ~Restore() { web_logic_active = previous; } } restore{previous};
+ web_logic_active = true;
+ fn();
+}
+#endif
 bool is_logic_thread() {
-	return logic_thread == std::this_thread::get_id();
+#ifdef WL_WEB_SINGLE_THREAD
+ return web_logic_active;
+#else
+ return logic_thread == std::this_thread::get_id();
+#endif
 }
 
 static std::string thread_name(const std::thread::id id) {

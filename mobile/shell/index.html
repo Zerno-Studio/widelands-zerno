@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Widelands · Zerno experiment</title>
+<link rel="stylesheet" href="mobile-controls.css">
+<main id="app">
+<div id="viewport"><canvas id="canvas" width="1280" height="720" tabindex="0" oncontextmenu="event.preventDefault()"></canvas></div>
+<aside id="toolbox" aria-label="Actions" hidden>
+<header><div><strong>Actions</strong><small id="context-label">Loading game…</small></div><button id="close-tools" aria-label="Close actions">×</button></header>
+<div class="tabs"><button data-tab="context" aria-pressed="true">This window</button><button data-tab="commands">Commands</button><button data-tab="help">Touch guide</button></div>
+<section id="context-section"><p id="context-note">Actions from the current game window.</p><div id="window-fields"></div><div id="window-actions" class="actions-list"></div></section>
+<section id="commands-section" hidden><label>Find an action<input id="action-search" type="search" placeholder="Save, roads, speed…" autocomplete="off"></label><label class="all-scopes"><input id="all-scopes" type="checkbox">Include other screens</label><div id="command-actions" class="actions-list"></div></section>
+<section id="help-section" hidden><h3>Touch guide</h3><p>Tap to select. Swipe with one finger on the map to move it. Drag a window or slider to adjust it. Hold to inspect without clicking.</p><p>Move two fingers together to move the map. Spread to zoom in; pinch to zoom out. A two-finger gesture never builds anything.</p><p>Use your device’s Back button to close a window or open the game menu. Close window below is the alternative to a secondary click.</p><p>Commands lists the game’s own shortcuts. Some commands work only in their relevant window; unavailable bindings are shown disabled.</p><h3>Extra options for the next tap</h3><p>Ctrl: multiple selection or road flags. Shift: ranges or alternate values. These also combine. The selected options clear after one tap.</p><div id="modifiers"><button data-mod="192">Ctrl</button><button data-mod="3">Shift</button><button data-mod="768">Alt</button></div><button id="clear-modifiers">Clear extra options</button><h3>Interface size</h3><div id="scales"><button data-scale="4">100%</button><button data-scale="5">125%</button><button data-scale="6">150%</button></div><p>Changes the original UI theme. Some older fixed-size windows still need individual adaptation.</p><button id="fullscreen" hidden>Full screen</button></section>
+<footer><button id="back-action">Back / game menu</button><button id="close-window">Close a window · then tap it</button><button id="minimize-window">Minimize a window · then tap it</button></footer>
+</aside>
+<nav id="controls" aria-label="Touch actions"><button id="more" aria-expanded="false" aria-controls="toolbox" title="Actions">☰<small>Actions</small></button></nav></main>
+<div id="loading"><h1>Widelands</h1><p id="status">Loading the original game…</p><pre id="log"></pre></div>
+<script>
+const canvas=document.getElementById('canvas'),statusText=document.getElementById('status'),log=document.getElementById('log');
+function message(t){console.log(t);log.textContent=(log.textContent+'\n'+t).slice(-5000)}
+let bootFailed=false;
+window.Module={canvas,arguments:['--datadir=/data','--homedir=/home/widelands','--language=en','--nosound','--xres=1280','--yres=720'],preRun:[function(){FS.mkdirTree('/home/widelands');FS.mount(IDBFS,{autoPersist:true},'/home/widelands');addRunDependency('saved-games');FS.syncfs(true,e=>{if(e)message('Save storage unavailable: '+e);removeRunDependency('saved-games')})}],print:message,printErr:message,setStatus(t){statusText.textContent=t||'Starting Widelands…'},onAbort(e){bootFailed=true;document.getElementById('loading').style.display='grid';statusText.textContent='Startup failed';message(String(e))}};
+Module.mobileScale=5;
+try{const saved=Number(localStorage.getItem('widelands.uiScale'));if([4,5,6].includes(saved))Module.mobileScale=saved;}catch(e){}
+Module.mobileRegistryRequest=true;
+Module.mobileCommandQueue=[];
+Module.mobileGesture={dx:0,dy:0,ratio:1};
+if(new URLSearchParams(location.search).get('tutorial')==='1')Module.arguments.push('--scenario=/data/campaigns/tutorial01_basic_control.wmf');
+// Stream directly into the final buffer: the generated loader otherwise keeps
+// all chunks plus a second complete 377 MiB copy alive at startup.
+function failBoot(e){Module.onAbort(e instanceof Error?e.message:String(e))}
+addEventListener('error',e=>failBoot(e.message||'Resource loading error'));
+addEventListener('unhandledrejection',e=>failBoot(e.reason));
+Module.noInitialRun=true;
+Module.onRuntimeInitialized=()=>{message('WASM runtime and C++ constructors ready; loading assets');loadAssets().catch(failBoot)};
+Module.monitorRunDependencies=n=>{if(n)statusText.textContent='Preparing game files ('+n+')'};
+async function loadAssets(){
+ const manifest=await fetch('package.json');if(!manifest.ok)throw new Error('Missing package manifest');
+ const {bytes,parts}=await manifest.json();
+ if(!Array.isArray(parts))throw new Error('Unsupported asset manifest');
+ let received=0;
+ const directories=new Set();
+ for(const part of parts){
+  const response=await fetch(part.url);if(!response.ok)throw new Error('Game data: HTTP '+response.status);
+  let data=new Uint8Array(part.bytes),offset=0;
+  const reader=response.body.getReader();
+  while(true){const {done,value}=await reader.read();if(done)break;
+   if(offset+value.length>part.bytes)throw new Error('Asset block exceeds expected size');
+   data.set(value,offset);offset+=value.length;
+   statusText.textContent='Loading game files: '+Math.round((received+offset)/bytes*100)+'%';
+  }
+  if(offset!==part.bytes)throw new Error('Incomplete asset block: '+part.url);
+  for(const file of part.files){
+   const parent=file.path.slice(0,file.path.lastIndexOf('/'));
+   if(!directories.has(parent)){FS.mkdirTree(parent);directories.add(parent);}
+   FS.writeFile(file.path,data.subarray(file.start,file.start+file.size),{canOwn:true});
+  }
+  received+=offset;data=null;
+  await new Promise(resolve=>setTimeout(resolve,0));
+ }
+ FS.mkdirTree('/data/music');FS.mkdirTree('/data/i18n/translations');
+ message('Game filesystem ready; entering C++ main');
+ Module.callMain(Module.arguments);
+}
+message('Build 0.11.0 / '+navigator.userAgent);
+message('Initializing WASM before loading game assets');
+{const script=document.createElement('script');script.src='widelands.js';script.onerror=()=>failBoot('Cannot load game engine');document.body.append(script)}
+let frameSeen=false;
+const loadingPoll=setInterval(()=>{if(!frameSeen&&log.textContent.includes('END GRAPHICS REPORT')){setTimeout(()=>{if(!bootFailed)document.getElementById('loading').style.display='none'},1500);frameSeen=true;clearInterval(loadingPoll)}},500);
+</script><script src="mobile-controls.js"></script></html>

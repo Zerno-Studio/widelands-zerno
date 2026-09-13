@@ -1,0 +1,11 @@
+vendor/
+build/
+www/
+
+stage/
+android/lib/
+android/out/
+android/debug.keystore
+android/app/src/main/assets/
+
+build-*/

@@ -17,6 +17,15 @@
  */
 
 #include "ui/basic/panel.h"
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#include "ui/basic/button.h"
+#include "graphic/image_cache.h"
+#include "ui/basic/textinput.h"
+#include "ui/basic/dropdown.h"
+#include "ui/basic/window.h"
+#include "ui/wui/interactive_base.h"
+#endif
 
 #include <atomic>
 #include <memory>
@@ -38,6 +47,26 @@
 #include "wlapplication_options.h"
 
 namespace UI {
+
+#ifdef __EMSCRIPTEN__
+namespace {
+void mobile_close_dropdowns(Panel* p) {
+ if (auto* dd=dynamic_cast<BaseDropdown*>(p)) dd->close();
+ for(auto* c=p->get_first_child();c;c=c->get_next_sibling()) mobile_close_dropdowns(c);
+}
+void mobile_fields(Panel* p, std::vector<AbstractTextInputPanel*>& fields) {
+ if(!p->is_visible())return;
+ if(auto* f=dynamic_cast<AbstractTextInputPanel*>(p);f && !f->is_password()) fields.push_back(f);
+ for(auto* c=p->get_first_child();c;c=c->get_next_sibling()) mobile_fields(c,fields);
+}
+void mobile_buttons(Panel* p, std::vector<Button*>& buttons) {
+ if (!p->is_visible()) return;
+ if (auto* b=dynamic_cast<Button*>(p)) buttons.push_back(b);
+ for (auto* child=p->get_first_child(); child; child=child->get_next_sibling()) mobile_buttons(child,buttons);
+}
+}
+#endif
+
 
 std::atomic<Panel*> Panel::modal_(nullptr);
 std::atomic<Panel*> Panel::mousegrab_(nullptr);
@@ -276,6 +305,93 @@ void Panel::do_redraw_now(const bool handle_input, const std::string& message) {
 	}
 
 	Panel& ff = get_topmost_forefather();
+
+#ifdef __EMSCRIPTEN__
+ if(EM_ASM_INT({return !!Module['mobileCommandQueue']?.length;},0)) {
+  mobile_close_dropdowns(&ff);
+  EM_ASM({Module['mobileCommandsReady']=true;},0);
+ }
+ Panel* active = modal_ ? modal_.load() : &ff;
+ int scope=1;
+ if (auto* ib=dynamic_cast<InteractiveBase*>(&ff)) scope=ib->egbase().is_game()?3:2;
+ Panel* window=active;
+ // Non-modal building windows are ordered front to back in the child list.
+ if (!dynamic_cast<Window*>(window)) {
+  for (auto* child=active->get_first_child();child;child=child->get_next_sibling()) {
+   if (child->is_visible() && dynamic_cast<Window*>(child)) {window=child;break;}
+  }
+ }
+ const std::string caption=dynamic_cast<Window*>(window)?dynamic_cast<Window*>(window)->get_title():window->get_name();
+ EM_ASM({ Module['mobileContext']=({scope:$0,window:UTF8ToString($1),blocked:!!$2,windowName:UTF8ToString($3)}); },scope,caption.c_str(),active!=&ff,window->get_name().c_str());
+ // Classify the initial touch using the same visible, mouse-sensitive widget tree.
+ if (EM_ASM_INT({return !!Module['mobileTouchProbe'];},0)) {
+  int x=EM_ASM_INT({return Module['mobileTouchProbe'].x;},0);
+  int y=EM_ASM_INT({return Module['mobileTouchProbe'].y;},0);
+  Panel* hit=&ff;
+  while (hit) {
+   x-=hit->lborder_;y-=hit->tborder_;
+   Panel* next=nullptr;
+   for(auto* c=hit->first_child_;c;c=c->next_) {
+    if(c->is_visible() && x>=c->x_ && y>=c->y_ && x<c->x_+static_cast<int>(c->w_) && y<c->y_+static_cast<int>(c->h_) && c->check_handles_mouse(x-c->x_,y-c->y_)){next=c;break;}
+   }
+   if(!next)break;
+   x-=next->x_;y-=next->y_;hit=next;
+  }
+  const bool pan=scope>=2 && active==&ff && hit && hit->get_name()=="mapview";
+  EM_ASM({Module['mobileTouchHit']=({id:Module['mobileTouchProbe'].id,pan:!!$0,target:UTF8ToString($1),blocked:!!$2});Module['mobileTouchProbe']=null;},pan,hit?hit->get_name().c_str():"",active!=&ff);
+ }
+ if (EM_ASM_INT({ return !!Module['mobileSnapshotRequest']; },0)) {
+  std::vector<Button*> buttons;mobile_buttons(window,buttons);
+  const std::string inspect = mousein_ ? mousein_->tooltip() : "";
+  EM_ASM({Module['mobileInspectText']=UTF8ToString($0);},inspect.c_str());
+  EM_ASM({Module['mobileWindowActions']=[];Module['mobileTextFields']=[];Module['mobileSnapshotRequest']=false;},0);
+  std::vector<AbstractTextInputPanel*> fields;mobile_fields(window,fields);
+  for(auto* f:fields){
+   EM_ASM({Module['mobileTextFields'].push({id:$0,name:UTF8ToString($1),text:UTF8ToString($2),window:UTF8ToString($3)});},reinterpret_cast<uintptr_t>(f),f->get_name().c_str(),f->get_text().c_str(),caption.c_str());
+  }
+  for (auto* b:buttons) {
+   const std::string label=b->get_title().empty()?b->tooltip():b->get_title();
+   if (label.empty()) continue;
+   const std::string icon = g_image_cache->image_name(b->get_pic());
+   EM_ASM({Module['mobileWindowActions'].push({id:$0,name:UTF8ToString($1),label:UTF8ToString($2),enabled:!!$3,window:UTF8ToString($4),tooltip:UTF8ToString($5),icon:UTF8ToString($6),toggle:!!$7,pressed:!!$8});},
+          reinterpret_cast<uintptr_t>(b),b->get_name().c_str(),label.c_str(),b->enabled(),caption.c_str(),b->tooltip().c_str(),icon.c_str(),b->is_toggle(),b->style()==Button::VisualState::kPermpressed);
+  }
+  EM_ASM({Module['mobileSnapshotVersion']=(Module['mobileSnapshotVersion']||0)+1;},0);
+ }
+ const int field_id=EM_ASM_INT({return Module['mobileTextCommand']?.id||0;},0);
+ if(field_id){
+  std::vector<AbstractTextInputPanel*> fields;mobile_fields(window,fields);
+  for(auto* f:fields){
+   if(reinterpret_cast<uintptr_t>(f)!=static_cast<uintptr_t>(field_id))continue;
+   if(!EM_ASM_INT({const c=Module['mobileTextCommand'];return c.name===UTF8ToString($0)&&c.window===UTF8ToString($1);},f->get_name().c_str(),caption.c_str()))break;
+   char text[2049];
+   EM_ASM({const bytes=new TextEncoder().encode(String(Module['mobileTextCommand'].text).slice(0,512));const n=Math.min(bytes.length,$1-1);HEAPU8.set(bytes.subarray(0,n),$0);HEAPU8[$0+n]=0;},text,sizeof(text));
+   EM_ASM({Module['mobileTextCommand']=null;Module['mobileSnapshotRequest']=true;},0);
+   f->set_text(text);
+   return; // Changed callbacks can replace the widget tree.
+  }
+  EM_ASM({Module['mobileTextCommand']=null;},0);
+ }
+ const int button_id=EM_ASM_INT({return Module['mobileWindowCommand']?.id||0;},0);
+ if (button_id) {
+  std::vector<Button*> buttons;mobile_buttons(window,buttons);
+  for (auto* b:buttons) {
+   if (reinterpret_cast<uintptr_t>(b)!=static_cast<uintptr_t>(button_id) || !b->enabled()) continue;
+   const std::string label=b->get_title().empty()?b->tooltip():b->get_title();
+   if (!EM_ASM_INT({const c=Module['mobileWindowCommand'];return c.name===UTF8ToString($0)&&c.label===UTF8ToString($1)&&c.window===UTF8ToString($2);},b->get_name().c_str(),label.c_str(),caption.c_str())) break;
+   EM_ASM({Module['mobileWindowCommand']=null;Module['mobileSnapshotRequest']=true;Module['mobileLastAction']=({id:$0,status:'dispatched'});},button_id);
+   b->sigclicked();
+   return; // A callback may destroy this window or start another modal loop.
+  }
+  EM_ASM({Module['mobileWindowCommand']=null;Module['mobileSnapshotRequest']=true;Module['mobileLastAction']=({id:$0,status:'stale'});},button_id);
+ }
+ const int scale=EM_ASM_INT({return Module['mobileScale']||5;},0);
+ if (scale>=4 && scale<=6 && scale!=get_scale_factor_quarters()) {
+  set_config_int("ui_scaling_factor_quarters",scale);
+  set_scale_factor_quarters(scale);
+  ff.template_directory_changed();
+ }
+#endif
 	RenderTarget& rt = *g_gr->get_render_target();
 
 	{
@@ -402,8 +518,19 @@ int Panel::do_run() {
 	logic_thread_locked_ = LogicThreadState::kFree;  // tell the logic thread we're ready
 
 	uint32_t next_time = SDL_GetTicks();
+#ifdef WL_WEB_SINGLE_THREAD
+ uint32_t next_logic_time = next_time;
+#endif
 	while (running_) {
 		const uint32_t start_time = SDL_GetTicks();
+#ifdef WL_WEB_SINGLE_THREAD
+ // Keep original 20 Hz simulation ticks and command ordering, but yield to
+ // the browser between frames through SDL's Asyncify-aware delay/swap.
+ if (modal_ == this && (flags_ & pf_logic_think) && start_time >= next_logic_time) {
+  next_logic_time = start_time + kGameLogicDelay;
+  run_web_logic_tick([this]() { game_logic_think(); });
+ }
+#endif
 
 		if (modal_ == this) {
 			handle_notes();
@@ -445,7 +572,13 @@ int Panel::do_run() {
 			next_time = start_time + kDrawDelay;
 		}
 
-		const int32_t delay = next_time - SDL_GetTicks();
+		int32_t delay = next_time - SDL_GetTicks();
+#ifdef WL_WEB_SINGLE_THREAD
+ // Wake for whichever is due first: the next simulation tick or redraw.
+ if (modal_ == this && (flags_ & pf_logic_think)) {
+  delay = std::min(delay, static_cast<int32_t>(next_logic_time - SDL_GetTicks()));
+ }
+#endif
 		if (running_ && delay > 0) {
 			SDL_Delay(delay);
 		}

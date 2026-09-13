@@ -1,0 +1,26 @@
+{
+  "afterOK": "Objectives",
+  "before": {
+    "x": 276,
+    "y": 1912,
+    "zoom": 1
+  },
+  "pan": {
+    "x": 216,
+    "y": 1912,
+    "zoom": 1
+  },
+  "pinch": {
+    "x": 380,
+    "y": 2044,
+    "zoom": 0.6666666865348816
+  },
+  "saveContext": "Save Game",
+  "saved": [
+    "touch-smoke.wgf"
+  ],
+  "saveBytes": 92296,
+  "reloadPreserved": true,
+  "storage": true,
+  "errors": []
+}

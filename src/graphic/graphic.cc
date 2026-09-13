@@ -19,6 +19,10 @@
 #include "graphic/graphic.h"
 
 #include <memory>
+#ifdef __EMSCRIPTEN__
+#include <emscripten/html5.h>
+#include <emscripten/emscripten.h>
+#endif
 
 #include <SDL_messagebox.h>
 #include <SDL_video.h>
@@ -103,8 +107,13 @@ void Graphic::initialize(const TraceGl& trace_gl,
 	}
 
 	uint32_t window_flags = SDL_WINDOW_OPENGL;
-#ifdef RESIZABLE_WINDOW
+#if defined(RESIZABLE_WINDOW) && !defined(__EMSCRIPTEN__)
 	window_flags |= SDL_WINDOW_RESIZABLE;
+#endif
+#ifdef __EMSCRIPTEN__
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
 #endif
 	sdl_window_ = SDL_CreateWindow("Widelands Window", window_x, window_y, window_mode_width_,
 	                               window_mode_height_, window_flags);
@@ -125,7 +134,11 @@ void Graphic::initialize(const TraceGl& trace_gl,
 	SDL_SetWindowTitle(sdl_window_, ("Widelands " + build_ver_details()).c_str());
 	set_icon(sdl_window_);
 
+#if defined(__EMSCRIPTEN__) && !defined(WL_WEB_SINGLE_THREAD)
+	emscripten_webgl_commit_frame();
+#else
 	SDL_GL_SwapWindow(sdl_window_);
+#endif
 
 	/* Information about the video capabilities. */
 	const char* drv = SDL_GetCurrentVideoDriver();
@@ -354,6 +367,17 @@ void Graphic::set_fullscreen(const bool value, int to_display) {
 void Graphic::refresh() {
 	RenderQueue::instance().draw(screen_->width(), screen_->height());
 
+#ifdef __EMSCRIPTEN__
+	// Apply shell resize requests at a frame boundary, never by calling back
+	// into a suspended Asyncify stack from a browser ResizeObserver.
+	const int requested_w = EM_ASM_INT({ return Module['mobileViewport']?.width || 0; });
+	const int requested_h = EM_ASM_INT({ return Module['mobileViewport']?.height || 0; });
+	if (requested_w >= kMinimumResolutionW && requested_h >= kMinimumResolutionH &&
+	    (requested_w != window_mode_width_ || requested_h != window_mode_height_)) {
+		change_resolution(requested_w, requested_h, true);
+	}
+#endif
+
 	if (!fullscreen()) {
 		// Set the window to our preferred size if it goes out of sync.
 		// Not sure if this is still needed, leaving it just in case.
@@ -380,7 +404,11 @@ void Graphic::refresh() {
 		screenshot_filename_.clear();
 	}
 
+#if defined(__EMSCRIPTEN__) && !defined(WL_WEB_SINGLE_THREAD)
+	emscripten_webgl_commit_frame();
+#else
 	SDL_GL_SwapWindow(sdl_window_);
+#endif
 }
 
 /**

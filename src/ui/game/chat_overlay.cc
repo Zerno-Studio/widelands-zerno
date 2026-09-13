@@ -76,6 +76,8 @@ ChatOverlay::ChatOverlay(UI::Panel* const parent,
                          int32_t const w,
                          int32_t const h)
    : UI::Panel(parent, UI::PanelStyle::kWui, "chat_overlay", x, y, w, h), m(new Impl(fn)) {
+	// This draw-only overlay must not intercept touch hit testing.
+	set_handle_mouse(false);
 	m->transparent_ = get_config_bool("transparent_chat", true);
 
 	set_z(UI::Panel::ZOrder::kConfirmation);  // above regular windows

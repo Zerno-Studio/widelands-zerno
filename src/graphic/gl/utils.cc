@@ -16,6 +16,9 @@
  */
 
 #include "graphic/gl/utils.h"
+#ifdef __EMSCRIPTEN__
+#include <regex>
+#endif
 
 #include <cassert>
 #include <cstddef>
@@ -66,9 +69,11 @@ const char* gl_error_to_string(const GLenum err) {
 		LOG(GL_INVALID_VALUE);
 		LOG(GL_NO_ERROR);
 		LOG(GL_OUT_OF_MEMORY);
+#ifndef __EMSCRIPTEN__
 		LOG(GL_STACK_OVERFLOW);
 		LOG(GL_STACK_UNDERFLOW);
 		LOG(GL_TABLE_TOO_LARGE);
+#endif
 	default:
 		break;
 	}
@@ -110,6 +115,20 @@ Shader::~Shader() {
 }
 
 void Shader::compile(const char* source) const {
+#ifdef __EMSCRIPTEN__
+ std::string web_source(source);
+ web_source=std::regex_replace(web_source,std::regex("#version 120"),"#version 300 es\nprecision highp float;\nprecision highp int;");
+ web_source=std::regex_replace(web_source,std::regex("\\battribute\\b"),"in");
+ web_source=std::regex_replace(web_source,std::regex("\\bvarying\\b"),type_==GL_VERTEX_SHADER?"out":"in");
+ web_source=std::regex_replace(web_source,std::regex("\\btexture2D\\b"),"texture");
+ if(type_==GL_FRAGMENT_SHADER){
+  web_source=std::regex_replace(web_source,std::regex("\\bgl_FragColor\\b"),"wl_fragment_color");
+  auto after=web_source.find("precision highp int;")+20;
+  web_source.insert(after,"\nout vec4 wl_fragment_color;\n");
+ }
+ source=web_source.c_str();
+#endif
+
 	glShaderSource(shader_object_, 1, &source, nullptr);
 
 	glCompileShader(shader_object_);

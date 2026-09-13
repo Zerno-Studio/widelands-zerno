@@ -1,0 +1,26 @@
+name: WidelandsZerno
+options:
+  bundleIdPrefix: com.stih07
+  deploymentTarget:
+    iOS: '17.0'
+targets:
+  WidelandsZerno:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: ../www
+        type: folder
+        buildPhase: resources
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.stih07.widelands
+        SWIFT_VERSION: '5.0'
+        TARGETED_DEVICE_FAMILY: '1,2'
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: Widelands Zerno
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown
+        MARKETING_VERSION: '0.11.0'
+        CURRENT_PROJECT_VERSION: '9'

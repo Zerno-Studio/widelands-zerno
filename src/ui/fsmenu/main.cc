@@ -219,6 +219,9 @@ MainMenu::MainMenu(const bool skip_init)
 	update_template();
 
 	singleplayer_.selected.connect([this]() { action(singleplayer_.get_selected()); });
+#ifdef WL_WEB_SINGLE_THREAD
+	multiplayer_.set_enabled(false);
+#endif
 	multiplayer_.selected.connect([this]() { action(multiplayer_.get_selected()); });
 	editor_.selected.connect([this]() { action(editor_.get_selected()); });
 	replay_.selected.connect([this]() { action(replay_.get_selected()); });

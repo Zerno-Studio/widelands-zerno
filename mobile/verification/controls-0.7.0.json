@@ -1,0 +1,142 @@
+[
+  {
+    "width": 896,
+    "height": 414,
+    "open": false,
+    "canvas": [
+      50,
+      0,
+      736,
+      414
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 896,
+    "height": 414,
+    "open": true,
+    "canvas": [
+      0,
+      36,
+      608,
+      342
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 960,
+    "height": 432,
+    "open": false,
+    "canvas": [
+      66,
+      0,
+      768,
+      432
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 960,
+    "height": 432,
+    "open": true,
+    "canvas": [
+      0,
+      27,
+      672,
+      378
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 1280,
+    "height": 549,
+    "open": false,
+    "canvas": [
+      122,
+      0,
+      976,
+      549
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 1280,
+    "height": 549,
+    "open": true,
+    "canvas": [
+      8,
+      0,
+      976,
+      549
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 1032,
+    "height": 792,
+    "open": false,
+    "canvas": [
+      0,
+      122.625,
+      972,
+      546.75
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 1032,
+    "height": 792,
+    "open": true,
+    "canvas": [
+      0,
+      186.75,
+      744,
+      418.5
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 549,
+    "height": 1280,
+    "open": false,
+    "canvas": [
+      0,
+      455.59375,
+      549,
+      308.8125
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  },
+  {
+    "width": 549,
+    "height": 1280,
+    "open": true,
+    "canvas": [
+      0,
+      345.59375,
+      549,
+      308.8125
+    ],
+    "overlap": [],
+    "small": [],
+    "footerClear": true
+  }
+]

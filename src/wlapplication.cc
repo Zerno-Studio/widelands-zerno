@@ -17,6 +17,9 @@
  */
 
 #include "wlapplication.h"
+#ifdef __EMSCRIPTEN__
+#include <emscripten/emscripten.h>
+#endif
 
 #include <cassert>
 #ifndef _WIN32
@@ -943,7 +946,9 @@ void WLApplication::init_and_run_game_from_template(FsMenu::MainMenu& mainmenu) 
 // In the future: push the first event on the event queue, then keep
 // dispatching events until it is time to quit.
 void WLApplication::run() {
+#ifndef WL_WEB_SINGLE_THREAD
 	GameLogicThread game_logic_thread(&should_die_);
+#endif
 
 	FsMenu::MainMenu menu(game_type_ != GameType::kNone);
 
@@ -1161,6 +1166,20 @@ bool WLApplication::handle_key(bool down, const SDL_Keycode& keycode, const int 
 }
 
 void WLApplication::handle_input(InputCallback const* cb) {
+#ifdef __EMSCRIPTEN__
+ if (EM_ASM_INT({ const r=Module['mobileRegistryRequest']; Module['mobileRegistryRequest']=false; return !!r; }, 0)) mobile_publish_shortcuts();
+ const int mobile_id = EM_ASM_INT({ if(!Module['mobileCommandsReady'])return -1;Module['mobileCommandsReady']=false;return Module['mobileCommandQueue']?.shift() ?? -1; }, 0);
+ if (mobile_id >= 0 && mobile_id <= static_cast<int>(get_highest_used_keyboard_shortcut()) &&
+     is_real(static_cast<KeyboardShortcut>(mobile_id))) {
+  const SDL_Keysym sym = get_shortcut(static_cast<KeyboardShortcut>(mobile_id));
+  if (sym.sym != SDLK_UNKNOWN) {
+   for (bool down : {true, false}) {
+    if (!handle_key(down, sym.sym, sym.mod) && cb && cb->key) cb->key(down, sym);
+   }
+  }
+ }
+#endif
+
 	// Container for keyboard events using the Alt key.
 	// <sym, mod>, type.
 	std::map<std::pair<SDL_Keycode, uint16_t>, unsigned> alt_events;
@@ -1193,9 +1212,18 @@ void WLApplication::handle_input(InputCallback const* cb) {
 			}
 			break;
 		case SDL_MOUSEBUTTONDOWN:
-		case SDL_MOUSEBUTTONUP:
-			handle_mousebutton(ev, cb);
-			break;
+		case SDL_MOUSEBUTTONUP: {
+#ifdef __EMSCRIPTEN__
+            const auto previous = SDL_GetModState();
+            const int mods = EM_ASM_INT({ return Module['mobileMouseModifiers']?.shift() ?? -1; }, 0);
+            if (mods >= 0) SDL_SetModState(static_cast<SDL_Keymod>(mods));
+#endif
+            handle_mousebutton(ev, cb);
+#ifdef __EMSCRIPTEN__
+            SDL_SetModState(previous);
+#endif
+            break;
+        }
 		case SDL_MOUSEWHEEL:
 			if ((cb != nullptr) && (cb->mouse_wheel != nullptr)) {
 				cb->mouse_wheel(ev.wheel.x, ev.wheel.y, SDL_GetModState());
@@ -1347,6 +1375,11 @@ bool WLApplication::init_settings() {
 	// Then parse the commandline - overwrites conffile settings
 	handle_commandline_parameters();
 
+#ifdef __EMSCRIPTEN__
+ set_config_bool("edge_scrolling", false);
+ set_config_bool("invert_movement", true);
+ set_config_int("ui_scaling_factor_quarters", EM_ASM_INT({ return Module['mobileScale'] || 5; }, 0));
+#endif
 	set_scale_factor_quarters(
 	   math::clamp(get_config_int("ui_scaling_factor_quarters", 4), 1, kMaxScaleFactorQuarters),
 	   false);

@@ -1,0 +1,104 @@
+{
+  "bytes": 394898320,
+  "fileCount": 20960,
+  "blocks": 25,
+  "largestBlock": 16776031,
+  "groups": {
+    "tribes": 233289058,
+    "templates": 81796176,
+    "maps": 32740891,
+    "campaigns": 21555706,
+    "i18n": 18223699,
+    "sound": 3498784,
+    "world": 2738061,
+    "images": 740239,
+    "scripting": 213709,
+    "txts": 79105,
+    "ai": 16486,
+    "shaders": 6367,
+    "datadirversion": 39
+  },
+  "largestFiles": [
+    [
+      5177387,
+      "i18n/fonts/MicroHei/wqy-microhei.ttc"
+    ],
+    [
+      3900791,
+      "templates/default/loadscreens/gameloading/desert/raps.png"
+    ],
+    [
+      3754691,
+      "tribes/ships/empire/idle_4.png"
+    ],
+    [
+      3671493,
+      "tribes/ships/empire/sail_nw_4.png"
+    ],
+    [
+      3670649,
+      "tribes/ships/empire/sail_w_4.png"
+    ],
+    [
+      3614152,
+      "tribes/ships/empire/sail_e_4.png"
+    ],
+    [
+      3552572,
+      "tribes/ships/empire/sail_ne_4.png"
+    ],
+    [
+      3523816,
+      "templates/default/loadscreens/gameloading/winter/jaegersee.png"
+    ],
+    [
+      3518274,
+      "tribes/ships/empire/sail_se_4.png"
+    ],
+    [
+      3377113,
+      "templates/default/loadscreens/gameloading/winter/autumn.png"
+    ],
+    [
+      3232085,
+      "templates/default/loadscreens/gameloading/desert/coast.png"
+    ],
+    [
+      3145845,
+      "maps/Accurate_Europe_v1.2.wmf/binary/resource"
+    ],
+    [
+      3096440,
+      "templates/default/loadscreens/gameloading/summer/autumnmeadow.png"
+    ],
+    [
+      3090071,
+      "templates/default/loadscreens/gameloading/wasteland/tappenkar.png"
+    ],
+    [
+      3079372,
+      "tribes/ships/empire/sail_sw_4.png"
+    ],
+    [
+      2950950,
+      "templates/default/loadscreens/gameloading/winter/snowmountain.png"
+    ],
+    [
+      2890528,
+      "templates/default/loadscreens/gameloading/wasteland/rainbow.png"
+    ],
+    [
+      2872699,
+      "templates/default/loadscreens/gameloading/summer/haselstein.png"
+    ],
+    [
+      2861592,
+      "templates/default/loadscreens/gameloading/winter/autumnleaves.png"
+    ],
+    [
+      2842653,
+      "templates/default/loadscreens/gameloading/summer/ennskraxnmeadow.png"
+    ]
+  ],
+  "note": "Bounded allocation, not lazy loading: all assets still mounted before main. No game content removed."
+}

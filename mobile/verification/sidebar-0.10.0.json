@@ -1,0 +1,44 @@
+{
+  "before": {
+    "id": 28919216,
+    "name": "buildings",
+    "label": "Buildings",
+    "enabled": true,
+    "window": "Map",
+    "tooltip": "Buildings",
+    "icon": "images/wui/minimap/button_bldns.png",
+    "toggle": true,
+    "pressed": true
+  },
+  "after": {
+    "id": 28919216,
+    "name": "buildings",
+    "label": "Buildings",
+    "enabled": true,
+    "window": "Map",
+    "tooltip": "Buildings",
+    "icon": "images/wui/minimap/button_bldns.png",
+    "toggle": true,
+    "pressed": false
+  },
+  "restored": true,
+  "iconCount": 11,
+  "crop": {
+    "width": 100,
+    "height": 20,
+    "fit": "cover"
+  },
+  "staleRejected": true,
+  "dimensions": {
+    "width": 975,
+    "height": 600,
+    "viewport": "{\"width\":975,\"height\":600}"
+  },
+  "keyboard": {
+    "width": 975,
+    "height": 600,
+    "viewport": "{\"width\":975,\"height\":600}",
+    "drawerHeight": 269
+  },
+  "errors": []
+}

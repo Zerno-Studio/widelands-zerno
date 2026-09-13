@@ -105,6 +105,8 @@ public:
 	    UI::Button::ImageMode mode = UI::Button::ImageMode::kShrink);
 	~Button() override = default;
 
+	const Image* get_pic() const { return title_image_; }
+	bool is_toggle() const { return toggle_control_; }
 	void set_pic(const Image* pic);
 	void set_title(const std::string&);
 	const std::string& get_title() const {
@@ -165,6 +167,7 @@ protected:
 	UI::Button::VisualState visual_state_;
 	UI::ButtonDisableStyle disable_style_;
 	bool repeating_;
+	bool toggle_control_{false};
 	const UI::Button::ImageMode image_mode_;
 
 	std::vector<Recti> focus_overlay_rects() override;

@@ -82,8 +82,16 @@ BuildGrid::BuildGrid(UI::Panel* parent, Widelands::Player* plr, int32_t x, int32
                   "build_grid",
                   x,
                   y,
+#ifdef __EMSCRIPTEN__
+                  kBuildGridCellSize * get_scale_factor_quarters() / 4,
+#else
                   kBuildGridCellSize,
+#endif
+#ifdef __EMSCRIPTEN__
+                  kBuildGridCellSize * get_scale_factor_quarters() / 4,
+#else
                   kBuildGridCellSize,
+#endif
                   cols),
      plr_(plr),
      fastplace_shortcuts_(get_active_fastplace_shortcuts(plr_->tribe().name())) {

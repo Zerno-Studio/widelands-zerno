@@ -20,7 +20,7 @@
 
 #ifndef _WIN32
 #ifndef __APPLE__
-#if !defined(__linux__) || defined(__GLIBC__)
+#if !defined(__EMSCRIPTEN__) && (!defined(__linux__) || defined(__GLIBC__))
 
 #include <execinfo.h>
 #endif
@@ -31,7 +31,7 @@ std::string get_backtrace() {
 	std::string result("Backtrace:\n");
 #ifndef _WIN32
 #ifndef __APPLE__
-#if !defined(__linux__) || defined(__GLIBC__)
+#if !defined(__EMSCRIPTEN__) && (!defined(__linux__) || defined(__GLIBC__))
 #define BACKTRACE_STACKSIZE 24
 
 	void* stack[BACKTRACE_STACKSIZE];

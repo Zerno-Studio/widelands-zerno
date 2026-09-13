@@ -1,0 +1,28 @@
+{
+  "crossOriginIsolated": false,
+  "sharedMemory": false,
+  "frames": 298,
+  "fps": 29.73032493228152,
+  "p95FrameMs": 40.40000009536743,
+  "canvas": [
+    1280,
+    720
+  ],
+  "browserBackStayed": true,
+  "storage": true,
+  "errors": [],
+  "logs": [
+    "This is Widelands version 1.4~git1 (187e4e2@zerno/wasm-android) Release",
+    "Adding home directory: /home/widelands",
+    "[00:00:00.000 real] INFO: Set home directory: /home/widelands",
+    "[00:00:00.011 real] INFO: Set configuration file: /home/widelands/config",
+    "[00:00:00.043 real] ERROR: [] config:0: RealFSImpl::load: could not open file for reading: /home/widelands/config",
+    "[00:00:00.174 real] INFO: Adding data directory: /data",
+    "[00:00:00.956 real] INFO: Byte order: little-endian",
+    "[00:00:00.982 real] INFO: Graphics: Try to set Videomode 1280x720",
+    "[00:00:01.202 real] INFO: **** GRAPHICS REPORT ****",
+    "[00:00:01.203 real] INFO: VIDEO DRIVER emscripten",
+    "[00:00:01.204 real] INFO: Display #0: 1280x720 @ 0hz SDL_PIXELFORMAT_RGB888",
+    "[00:00:01.205 real] INFO: **** END GRAPHICS REPORT ****"
+  ]
+}

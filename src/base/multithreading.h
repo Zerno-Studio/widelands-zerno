@@ -36,6 +36,9 @@ bool is_initializer_thread();
 // Same for the game logic thread
 void set_logic_thread();
 bool is_logic_thread();
+#ifdef WL_WEB_SINGLE_THREAD
+void run_web_logic_tick(const std::function<void()>& fn);
+#endif
 
 /*
  * Informs the drawing thread to run the given function ASAP.

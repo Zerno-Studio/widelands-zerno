@@ -118,6 +118,9 @@ endif()
 
 find_package (Python3 REQUIRED)
 
+if(EMSCRIPTEN)
+ include("${CMAKE_SOURCE_DIR}/mobile/Emscripten.cmake")
+else()
 find_package(OpenGL REQUIRED)
 find_package(PNG 1.6 REQUIRED)
 
@@ -131,6 +134,8 @@ if(OPTION_USE_GLBINDING)
   find_package(glbinding REQUIRED)
 else()
   find_package(GLEW REQUIRED)
+endif()
+
 endif()
 
 # Check that Asio is installed. Asio does not have (or need) a Find… CMake Module, so we "only" need to check if the header exists.

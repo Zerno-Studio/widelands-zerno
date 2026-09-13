@@ -41,6 +41,7 @@ public:
 	static constexpr int kNoScale = 0xff;
 	static constexpr int kDefaultScaleIndex = 1;
 
+	std::string image_name(const Image* image);
 	ImageCache() = default;
 	~ImageCache() = default;
 
@@ -67,6 +68,7 @@ public:
 	uint8_t get_mipmap_bitset(const std::string& hash);
 
 private:
+	std::map<const Image*, std::string> image_names_;
 	std::vector<std::unique_ptr<Texture>> texture_atlases_;
 	std::map<std::string, std::unique_ptr<const Image>> images_;
 	std::map<std::string, uint8_t /* scales bitset */> mipmap_cache_;

@@ -1,3 +1,16 @@
+# Widelands for Android by Zerno
+
+An unofficial Android adaptation of Widelands: the existing C++ engine compiled
+to WebAssembly, running inside Android WebView with touch controls and a floating
+Actions interface. Original game by the Widelands Development Team.
+
+**[Download, build instructions and mobile limitations](mobile/README.md)**
+
+The original upstream project documentation follows. Its badges describe upstream
+builds, not validation of this Android port.
+
+---
+
 # Widelands
 
 [![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/widelands/widelands?branch=master&svg=true)](https://ci.appveyor.com/project/widelands-dev/widelands)

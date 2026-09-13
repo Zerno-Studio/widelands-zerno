@@ -1,0 +1,21 @@
+# Emscripten supplies these libraries through its pinned ports collection.
+option(WL_WEB_SINGLE_THREAD "Cooperative web game loop without SharedArrayBuffer" ON)
+add_compile_options(-fexceptions -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -sUSE_SDL_MIXER=2 -sUSE_SDL_TTF=2 -sUSE_LIBPNG=1 -sUSE_ZLIB=1 -sUSE_ICU=1)
+add_link_options(-fexceptions -sUSE_SDL=2 -sUSE_SDL_IMAGE=2 -sUSE_SDL_MIXER=2 -sUSE_SDL_TTF=2 -sUSE_LIBPNG=1 -sUSE_ZLIB=1 -sUSE_ICU=1 "-sSDL2_IMAGE_FORMATS=[\"png\",\"jpg\"]" "-sSDL2_MIXER_FORMATS=[\"ogg\"]" -sALLOW_MEMORY_GROWTH=1 -sINITIAL_MEMORY=67108864 -sMAXIMUM_MEMORY=2147483648 -sSTACK_SIZE=8388608 -sDEFAULT_PTHREAD_STACK_SIZE=8388608 -sMIN_WEBGL_VERSION=2 -sMAX_WEBGL_VERSION=2 -sEXIT_RUNTIME=0 -sASSERTIONS=1)
+foreach(dep OpenGL::GL PNG::PNG SDL2::Main SDL2::Core SDL2::Image SDL2::Mixer SDL2::TTF ZLIB::ZLIB ICU::uc ICU::dt GLEW::GLEW)
+ add_library(${dep} INTERFACE IMPORTED GLOBAL)
+endforeach()
+set(SDL2_LIBRARY SDL2::Core)
+set(TINYGETTEXT_WITH_SDL ON CACHE BOOL "Use SDL iconv" FORCE)
+set(OPTION_FORCE_EMBEDDED_MINIZIP ON CACHE BOOL "Use bundled minizip" FORCE)
+set(asio_location "${CMAKE_SOURCE_DIR}/mobile/vendor/asio-asio-1-30-2/asio/include")
+
+include_directories(SYSTEM "${asio_location}")
+
+if(WL_WEB_SINGLE_THREAD)
+ add_compile_definitions(WL_WEB_SINGLE_THREAD)
+ add_link_options(--emit-symbol-map [=[-sASYNCIFY_REMOVE=["__wasm_call_ctors"]]=] -sASYNCIFY=1 -sASYNCIFY_STACK_SIZE=2097152)
+else()
+ add_compile_options(-pthread)
+ add_link_options(-pthread -sPROXY_TO_PTHREAD=1 -sPTHREAD_POOL_SIZE=4 -sOFFSCREEN_FRAMEBUFFER=1)
+endif()

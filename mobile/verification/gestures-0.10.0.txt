@@ -1,0 +1,1 @@
+{"gesture":{"gesture":{"dx":52.63157894736842,"dy":0,"ratio":1.125},"clicks":[],"mode":"idle"},"clicks":[["mousedown",0],["mouseup",0]],"mods":[195,195]}

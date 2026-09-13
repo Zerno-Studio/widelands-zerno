@@ -29,8 +29,40 @@
 #include "graphic/gl/utils.h"
 #include "graphic/text/bidi.h"
 
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#include <emscripten/html5.h>
+#endif
+
 namespace Gl {
 
+#ifdef __EMSCRIPTEN__
+SDL_GLContext initialize(const Trace&, SDL_Window* window, GLint* max_texture_size) {
+ SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_ES);
+ SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
+ SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+ SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+ SDL_GLContext context=SDL_GL_CreateContext(window);
+ if(!context) throw wexception("WebGL2 context failed: %s", SDL_GetError());
+ SDL_GL_MakeCurrent(window,context);
+#ifndef WL_WEB_SINGLE_THREAD
+ // SDL EGL creates the context on the browser thread; register it with the
+ // pthread-aware GL dispatch layer before asynchronous texture uploads.
+ EmscriptenWebGLContextAttributes attrs;
+ emscripten_webgl_init_context_attributes(&attrs);
+ attrs.majorVersion=2;attrs.minorVersion=0;attrs.alpha=false;attrs.depth=false;
+ attrs.explicitSwapControl=true;attrs.antialias=false;attrs.proxyContextToMainThread=EMSCRIPTEN_WEBGL_CONTEXT_PROXY_ALWAYS;
+ const int handle=emscripten_webgl_create_context("#canvas",&attrs);
+ if(emscripten_webgl_make_context_current(handle)!=EMSCRIPTEN_RESULT_SUCCESS)
+  throw wexception("Could not activate WebGL context on the game thread");
+#endif
+ glGetIntegerv(GL_MAX_TEXTURE_SIZE,max_texture_size);
+ glDisable(GL_DEPTH_TEST); glDepthFunc(GL_LEQUAL);
+ glEnable(GL_BLEND); glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+ glClear(GL_COLOR_BUFFER_BIT);
+ return context;
+}
+#else
 SDL_GLContext initialize(
 #ifdef USE_GLBINDING
    const Trace& trace,
@@ -321,4 +353,5 @@ SDL_GLContext initialize(
 	return gl_context;
 }
 
+#endif
 }  // namespace Gl

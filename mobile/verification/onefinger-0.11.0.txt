@@ -1,0 +1,1 @@
+Map swipe, delayed hit after release, native UI drag, tap and cancel passed

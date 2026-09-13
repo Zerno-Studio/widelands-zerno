@@ -137,8 +137,19 @@ Texture::Texture(SDL_Surface* surface, bool intensity) : owns_texture_(false) {
 
 	Gl::swap_rows(width(), height(), surface->pitch, bpp, static_cast<uint8_t*>(surface->pixels));
 
+#ifdef __EMSCRIPTEN__
+ // ES has no legacy intensity format. Expand red into all four channels.
+ if (intensity) {
+  auto* pixels=static_cast<uint8_t*>(surface->pixels);
+  for(int y=0;y<height();++y) for(int x=0;x<width();++x) {
+   auto* p=pixels+y*surface->pitch+x*4;p[1]=p[2]=p[3]=p[0];
+  }
+ }
+ glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,width(),height(),0,GL_RGBA,GL_UNSIGNED_BYTE,surface->pixels);
+#else
 	glTexImage2D(GL_TEXTURE_2D, 0, static_cast<GLint>(intensity ? GL_INTENSITY : GL_RGBA), width(),
 	             height(), 0, GL_RGBA, GL_UNSIGNED_BYTE, surface->pixels);
+#endif
 
 	SDL_UnlockSurface(surface);
 	SDL_FreeSurface(surface);
@@ -217,7 +228,15 @@ void Texture::lock() {
 	pixels_.reset(new uint8_t[4ULL * width() * height()]);
 
 	Gl::State::instance().bind(GL_TEXTURE0, blit_data_.texture_id);
-	glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels_.get());
+	#ifdef __EMSCRIPTEN__
+ GLint previous=0; glGetIntegerv(GL_FRAMEBUFFER_BINDING,&previous);
+ GLuint readback=0; glGenFramebuffers(1,&readback); glBindFramebuffer(GL_FRAMEBUFFER,readback);
+ glFramebufferTexture2D(GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,blit_data_.texture_id,0);
+ glReadPixels(0,0,width(),height(),GL_RGBA,GL_UNSIGNED_BYTE,pixels_.get());
+ glBindFramebuffer(GL_FRAMEBUFFER,previous);glDeleteFramebuffers(1,&readback);
+#else
+ glGetTexImage(GL_TEXTURE_2D, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels_.get());
+#endif
 }
 
 void Texture::unlock(UnlockMode mode) {

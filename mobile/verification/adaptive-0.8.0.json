@@ -1,0 +1,167 @@
+{
+  "results": [
+    {
+      "width": 1032,
+      "height": 792,
+      "open": false,
+      "desired": {
+        "width": 972,
+        "height": 792
+      },
+      "actual": [
+        972,
+        792
+      ],
+      "buffer": [
+        972,
+        792
+      ],
+      "css": [
+        972,
+        792
+      ],
+      "viewport": [
+        972,
+        792
+      ],
+      "contextLost": false,
+      "footerClear": true
+    },
+    {
+      "width": 960,
+      "height": 432,
+      "open": false,
+      "desired": {
+        "width": 1250,
+        "height": 600
+      },
+      "actual": [
+        1250,
+        600
+      ],
+      "buffer": [
+        1250,
+        600
+      ],
+      "css": [
+        900,
+        432
+      ],
+      "viewport": [
+        900,
+        432
+      ],
+      "contextLost": false,
+      "footerClear": true
+    },
+    {
+      "width": 960,
+      "height": 432,
+      "open": true,
+      "desired": {
+        "width": 933,
+        "height": 600
+      },
+      "actual": [
+        933,
+        600
+      ],
+      "buffer": [
+        933,
+        600
+      ],
+      "css": [
+        672,
+        432
+      ],
+      "viewport": [
+        672,
+        432
+      ],
+      "contextLost": false,
+      "footerClear": true
+    },
+    {
+      "width": 1032,
+      "height": 792,
+      "open": false,
+      "desired": {
+        "width": 972,
+        "height": 792
+      },
+      "actual": [
+        972,
+        792
+      ],
+      "buffer": [
+        972,
+        792
+      ],
+      "css": [
+        972,
+        792
+      ],
+      "viewport": [
+        972,
+        792
+      ],
+      "contextLost": false,
+      "footerClear": true
+    },
+    {
+      "width": 549,
+      "height": 1280,
+      "open": false,
+      "desired": {
+        "width": 800,
+        "height": 1778
+      },
+      "actual": [
+        800,
+        1778
+      ],
+      "buffer": [
+        800,
+        1778
+      ],
+      "css": [
+        549,
+        1220
+      ],
+      "viewport": [
+        549,
+        1220
+      ],
+      "contextLost": false,
+      "footerClear": true
+    },
+    {
+      "width": 1280,
+      "height": 549,
+      "open": false,
+      "desired": {
+        "width": 1333,
+        "height": 600
+      },
+      "actual": [
+        1333,
+        600
+      ],
+      "buffer": [
+        1333,
+        600
+      ],
+      "css": [
+        1220,
+        549
+      ],
+      "viewport": [
+        1220,
+        549
+      ],
+      "contextLost": false,
+      "footerClear": true
+    }
+  ],
+  "errors": []
+}

@@ -21,6 +21,9 @@
 
 #include <functional>
 
+#ifdef WL_WEB_SINGLE_THREAD
+#define ASIO_DISABLE_THREADS
+#endif
 #include <asio.hpp>
 
 #include "base/string.h"

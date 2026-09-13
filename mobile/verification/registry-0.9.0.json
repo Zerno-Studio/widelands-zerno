@@ -1,0 +1,2062 @@
+{
+  "context": {
+    "scope": 3,
+    "window": "Welcome to the Widelands Tutorial!",
+    "blocked": true
+  },
+  "buttons": [
+    {
+      "id": 24374320,
+      "name": "ok",
+      "label": "OK",
+      "enabled": true,
+      "window": "Welcome to the Widelands Tutorial!"
+    },
+    {
+      "id": 18885312,
+      "name": "b_minimize",
+      "label": "Minimize",
+      "enabled": true,
+      "window": "Welcome to the Widelands Tutorial!"
+    },
+    {
+      "id": 19091192,
+      "name": "b_pin",
+      "label": "Pin",
+      "enabled": true,
+      "window": "Welcome to the Widelands Tutorial!"
+    },
+    {
+      "id": 18978856,
+      "name": "b_close",
+      "label": "Close",
+      "enabled": true,
+      "window": "Welcome to the Widelands Tutorial!"
+    }
+  ],
+  "commands": [
+    {
+      "id": 0,
+      "name": "mainmenu_sp",
+      "label": "Singleplayer",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 1,
+      "name": "mainmenu_new",
+      "label": "New Game",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 2,
+      "name": "mainmenu_random",
+      "label": "New Random Game",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 3,
+      "name": "mainmenu_campaign",
+      "label": "Campaigns",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 4,
+      "name": "mainmenu_tutorial",
+      "label": "Tutorials",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 5,
+      "name": "mainmenu_load",
+      "label": "Load Game",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 6,
+      "name": "mainmenu_continue",
+      "label": "Continue Playing",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 7,
+      "name": "mainmenu_mp",
+      "label": "Multiplayer",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 8,
+      "name": "mainmenu_lobby",
+      "label": "Metaserver Lobby",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 9,
+      "name": "mainmenu_login",
+      "label": "Internet Login",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 10,
+      "name": "mainmenu_lan",
+      "label": "LAN / Direct IP",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 11,
+      "name": "mainmenu_e",
+      "label": "Editor",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 12,
+      "name": "mainmenu_editor_new",
+      "label": "Editor – New Map",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 13,
+      "name": "mainmenu_editor_random",
+      "label": "Editor – New Random Map",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 14,
+      "name": "mainmenu_editor_load",
+      "label": "Editor – Load Map",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 15,
+      "name": "mainmenu_editor_continue",
+      "label": "Continue Editing",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 16,
+      "name": "mainmenu_replay",
+      "label": "Watch Replay",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 17,
+      "name": "mainmenu_load_replay",
+      "label": "Load Replay",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 18,
+      "name": "mainmenu_replay_last",
+      "label": "Watch Latest Replay",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 19,
+      "name": "mainmenu_options",
+      "label": "Options",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 20,
+      "name": "mainmenu_addons",
+      "label": "Add-Ons",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 21,
+      "name": "mainmenu_about",
+      "label": "About",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 22,
+      "name": "mainmenu_quit",
+      "label": "Exit Widelands",
+      "scopes": 2,
+      "bound": true
+    },
+    {
+      "id": 23,
+      "name": "load",
+      "label": "Load",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 24,
+      "name": "save",
+      "label": "Save",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 25,
+      "name": "exit",
+      "label": "Exit",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 26,
+      "name": "encyclopedia",
+      "label": "Encyclopedia",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 27,
+      "name": "zoom_in",
+      "label": "Zoom In",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 28,
+      "name": "zoom_out",
+      "label": "Zoom Out",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 29,
+      "name": "zoom_max",
+      "label": "Maximum Zoom",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 30,
+      "name": "zoom_min",
+      "label": "Minimum Zoom",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 31,
+      "name": "zoom_reset",
+      "label": "Reset Zoom",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 32,
+      "name": "context_menu",
+      "label": "Context Menu",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 33,
+      "name": "cut",
+      "label": "Cut Text",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 34,
+      "name": "copy",
+      "label": "Copy Text",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 35,
+      "name": "paste",
+      "label": "Paste Text",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 36,
+      "name": "selectall",
+      "label": "Select All",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 37,
+      "name": "delete",
+      "label": "Delete Item",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 38,
+      "name": "tt_access_mode",
+      "label": "Tooltip Accessibility Mode Key",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 39,
+      "name": "fullscreen",
+      "label": "Toggle Fullscreen",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 40,
+      "name": "screenshot",
+      "label": "Take Screenshot",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 41,
+      "name": "change_music",
+      "label": "Change Music",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 42,
+      "name": "debugconsole",
+      "label": "Open the Debug Console (developer tool)",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 43,
+      "name": "cheatmode",
+      "label": "Toggle Cheat Mode (developer tool)",
+      "scopes": 1,
+      "bound": true
+    },
+    {
+      "id": 44,
+      "name": "buildhelp",
+      "label": "Toggle Building Spaces",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 45,
+      "name": "minimap",
+      "label": "Toggle Minimap",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 46,
+      "name": "quicknav_prev",
+      "label": "Jump to Previous Location",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 47,
+      "name": "quicknav_next",
+      "label": "Jump to Next Location",
+      "scopes": 12,
+      "bound": true
+    },
+    {
+      "id": 48,
+      "name": "editor_new_map",
+      "label": "New Map",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 49,
+      "name": "editor_new_random_map",
+      "label": "New Random Map",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 52,
+      "name": "editor_upload_map",
+      "label": "Publish Map Online",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 53,
+      "name": "editor_mapoptions",
+      "label": "Map Options",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 57,
+      "name": "editor_showhide_maximum_buildhelp",
+      "label": "Toggle Maximum Build Spaces",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 58,
+      "name": "editor_showhide_height_heat_map",
+      "label": "Toggle Height Heat Map",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 59,
+      "name": "editor_showhide_grid",
+      "label": "Toggle Grid",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 60,
+      "name": "editor_showhide_oceans",
+      "label": "Toggle Oceans",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 61,
+      "name": "editor_showhide_immovables",
+      "label": "Toggle Immovables",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 62,
+      "name": "editor_showhide_critters",
+      "label": "Toggle Animals",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 63,
+      "name": "editor_showhide_resources",
+      "label": "Toggle Resources",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 68,
+      "name": "editor_tools",
+      "label": "Show Tools Menu",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 69,
+      "name": "editor_change_height",
+      "label": "Change Height Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 70,
+      "name": "editor_random_height",
+      "label": "Random Height Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 71,
+      "name": "editor_terrain",
+      "label": "Terrain Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 72,
+      "name": "editor_immovables",
+      "label": "Immovables Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 73,
+      "name": "editor_animals",
+      "label": "Animals Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 74,
+      "name": "editor_resources",
+      "label": "Resources Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 75,
+      "name": "editor_port_spaces",
+      "label": "Port Spaces Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 76,
+      "name": "editor_info",
+      "label": "Info Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 77,
+      "name": "editor_map_origin",
+      "label": "Map Origin Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 78,
+      "name": "editor_map_size",
+      "label": "Map Size Tool",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 79,
+      "name": "editor_players",
+      "label": "Players Menu",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 80,
+      "name": "editor_tool_history",
+      "label": "Tool History",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 81,
+      "name": "editor_undo",
+      "label": "Undo",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 82,
+      "name": "editor_redo",
+      "label": "Redo",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 83,
+      "name": "editor_picker",
+      "label": "Pick From Map",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 84,
+      "name": "editor_toolsize1",
+      "label": "Set Toolsize to 1",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 85,
+      "name": "editor_toolsize2",
+      "label": "Set Toolsize to 2",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 86,
+      "name": "editor_toolsize3",
+      "label": "Set Toolsize to 3",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 87,
+      "name": "editor_toolsize4",
+      "label": "Set Toolsize to 4",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 88,
+      "name": "editor_toolsize5",
+      "label": "Set Toolsize to 5",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 89,
+      "name": "editor_toolsize6",
+      "label": "Set Toolsize to 6",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 90,
+      "name": "editor_toolsize7",
+      "label": "Set Toolsize to 7",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 91,
+      "name": "editor_toolsize8",
+      "label": "Set Toolsize to 8",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 92,
+      "name": "editor_toolsize9",
+      "label": "Set Toolsize to 9",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 93,
+      "name": "editor_toolsize10",
+      "label": "Set Toolsize to 10",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 94,
+      "name": "editor_toolgap0",
+      "label": "Set Tool Gap to 0%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 95,
+      "name": "editor_toolgap10",
+      "label": "Set Tool Gap to 10%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 96,
+      "name": "editor_toolgap20",
+      "label": "Set Tool Gap to 20%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 97,
+      "name": "editor_toolgap30",
+      "label": "Set Tool Gap to 30%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 98,
+      "name": "editor_toolgap40",
+      "label": "Set Tool Gap to 40%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 99,
+      "name": "editor_toolgap50",
+      "label": "Set Tool Gap to 50%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 100,
+      "name": "editor_toolgap60",
+      "label": "Set Tool Gap to 60%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 101,
+      "name": "editor_toolgap70",
+      "label": "Set Tool Gap to 70%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 102,
+      "name": "editor_toolgap80",
+      "label": "Set Tool Gap to 80%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 103,
+      "name": "editor_toolgap90",
+      "label": "Set Tool Gap to 90%",
+      "scopes": 4,
+      "bound": true
+    },
+    {
+      "id": 104,
+      "name": "game_sound_options",
+      "label": "Sound Options",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 107,
+      "name": "game_restart",
+      "label": "Restart Scenario or Replay",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 110,
+      "name": "game_messages",
+      "label": "Messages",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 111,
+      "name": "game_objectives",
+      "label": "Objectives",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 112,
+      "name": "game_diplomacy",
+      "label": "Diplomacy",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 113,
+      "name": "game_chat",
+      "label": "Chat",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 114,
+      "name": "game_stats_general",
+      "label": "General Statistics",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 115,
+      "name": "game_stats_wares",
+      "label": "Ware Statistics",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 116,
+      "name": "game_stats_buildings",
+      "label": "Building Statistics",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 117,
+      "name": "game_stats_stock",
+      "label": "Stock Inventory",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 118,
+      "name": "game_stats_soldiers",
+      "label": "Soldier Statistics",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 119,
+      "name": "game_stats_seafaring",
+      "label": "Seafaring Statistics",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 120,
+      "name": "game_speed_up",
+      "label": "Increase Game Speed by 1×",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 121,
+      "name": "game_speed_up_slow",
+      "label": "Increase Game Speed by 0.25×",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 122,
+      "name": "game_speed_up_fast",
+      "label": "Increase Game Speed by 10×",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 123,
+      "name": "game_speed_down",
+      "label": "Decrease Game Speed by 1×",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 124,
+      "name": "game_speed_down_slow",
+      "label": "Decrease Game Speed by 0.25×",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 125,
+      "name": "game_speed_down_fast",
+      "label": "Decrease Game Speed by 10×",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 126,
+      "name": "game_pause",
+      "label": "Pause The Game",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 127,
+      "name": "game_speed_reset",
+      "label": "Reset Game Speed",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 129,
+      "name": "game_showhide_census",
+      "label": "Toggle Census",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 130,
+      "name": "game_showhide_stats",
+      "label": "Toggle Status Labels",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 131,
+      "name": "game_showhide_soldiers",
+      "label": "Toggle Soldier Levels",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 132,
+      "name": "game_showhide_buildings",
+      "label": "Toggle Buildings Visibility",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 133,
+      "name": "game_showhide_workareas",
+      "label": "Toggle Overlapping Workareas",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 136,
+      "name": "game_hq",
+      "label": "Scroll to Starting Field",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 140,
+      "name": "quicknav_gui",
+      "label": "Toggle Quick Navigation",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 141,
+      "name": "game_pinned_note",
+      "label": "Pinned Note",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 142,
+      "name": "game_quicknav_set_1",
+      "label": "Set Landmark #1",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 143,
+      "name": "game_quicknav_goto_1",
+      "label": "Go To Landmark #1",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 144,
+      "name": "game_quicknav_set_2",
+      "label": "Set Landmark #2",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 145,
+      "name": "game_quicknav_goto_2",
+      "label": "Go To Landmark #2",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 146,
+      "name": "game_quicknav_set_3",
+      "label": "Set Landmark #3",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 147,
+      "name": "game_quicknav_goto_3",
+      "label": "Go To Landmark #3",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 148,
+      "name": "game_quicknav_set_4",
+      "label": "Set Landmark #4",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 149,
+      "name": "game_quicknav_goto_4",
+      "label": "Go To Landmark #4",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 150,
+      "name": "game_quicknav_set_5",
+      "label": "Set Landmark #5",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 151,
+      "name": "game_quicknav_goto_5",
+      "label": "Go To Landmark #5",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 152,
+      "name": "game_quicknav_set_6",
+      "label": "Set Landmark #6",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 153,
+      "name": "game_quicknav_goto_6",
+      "label": "Go To Landmark #6",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 154,
+      "name": "game_quicknav_set_7",
+      "label": "Set Landmark #7",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 155,
+      "name": "game_quicknav_goto_7",
+      "label": "Go To Landmark #7",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 156,
+      "name": "game_quicknav_set_8",
+      "label": "Set Landmark #8",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 157,
+      "name": "game_quicknav_goto_8",
+      "label": "Go To Landmark #8",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 158,
+      "name": "game_quicknav_set_9",
+      "label": "Set Landmark #9",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 159,
+      "name": "game_quicknav_goto_9",
+      "label": "Go To Landmark #9",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 160,
+      "name": "game_msg_filter_all",
+      "label": "Messages: Show All Messages",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 161,
+      "name": "game_msg_filter_geo",
+      "label": "Messages: Show Geologists’ Messages Only",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 162,
+      "name": "game_msg_filter_eco",
+      "label": "Messages: Show Economy Messages Only",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 163,
+      "name": "game_msg_filter_seafaring",
+      "label": "Messages: Show Seafaring Messages Only",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 164,
+      "name": "game_msg_filter_warfare",
+      "label": "Messages: Show Military Messages Only",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 165,
+      "name": "game_msg_filter_scenario",
+      "label": "Messages: Show Scenario Messages Only",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 166,
+      "name": "game_msg_filter_diplomacy",
+      "label": "Messages: Show Diplomacy Messages Only",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 167,
+      "name": "game_msg_goto",
+      "label": "Messages: Go to Location",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 168,
+      "name": "game_sfstats_filter_all",
+      "label": "Seafaring: Show All Ships",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 169,
+      "name": "game_sfstats_filter_idle",
+      "label": "Seafaring: Show Idle Ships",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 170,
+      "name": "game_sfstats_filter_ship",
+      "label": "Seafaring: Show Transport Ships",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 171,
+      "name": "game_sfstats_filter_wait",
+      "label": "Seafaring: Show Waiting Expeditions",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 172,
+      "name": "game_sfstats_filter_scout",
+      "label": "Seafaring: Show Scouting Expeditions",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 173,
+      "name": "game_sfstats_filter_port",
+      "label": "Seafaring: Show Expeditions with Port Spaces",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 174,
+      "name": "game_sfstats_filter_warship",
+      "label": "Seafaring: Show Warships",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 175,
+      "name": "game_sfstats_filter_refitting",
+      "label": "Seafaring: Show Ships Being Refitted",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 176,
+      "name": "game_sfstats_goto",
+      "label": "Seafaring: Go to Ship",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 177,
+      "name": "game_sfstats_watch",
+      "label": "Seafaring: Watch Ship",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 178,
+      "name": "game_sfstats_open",
+      "label": "Seafaring: Open Ship Window",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 179,
+      "name": "game_sfstats_open_goto",
+      "label": "Seafaring: Open Ship Window And Go to Ship",
+      "scopes": 8,
+      "bound": true
+    },
+    {
+      "id": 180,
+      "name": "fastplace_market",
+      "label": "Market",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 181,
+      "name": "fastplace_warehouse",
+      "label": "Warehouse",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 182,
+      "name": "fastplace_port",
+      "label": "Port",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 183,
+      "name": "fastplace_training_small",
+      "label": "Minor Training Site",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 184,
+      "name": "fastplace_training_large",
+      "label": "Major Training Site",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 185,
+      "name": "fastplace_military_small_primary",
+      "label": "Primary Small Military Site",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 186,
+      "name": "fastplace_military_small_secondary",
+      "label": "Secondary Small Military Site",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 187,
+      "name": "fastplace_military_medium_primary",
+      "label": "Primary Medium Military Site",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 188,
+      "name": "fastplace_military_medium_secondary",
+      "label": "Secondary Medium Military Site",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 189,
+      "name": "fastplace_military_tower",
+      "label": "Tower",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 190,
+      "name": "fastplace_military_fortress",
+      "label": "Fortress",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 191,
+      "name": "fastplace_woodcutter",
+      "label": "Woodcutter’s House",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 192,
+      "name": "fastplace_forester",
+      "label": "Forester’s House",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 193,
+      "name": "fastplace_quarry",
+      "label": "Quarry",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 194,
+      "name": "fastplace_building_materials_primary",
+      "label": "Primary Building Materials Industry",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 195,
+      "name": "fastplace_building_materials_secondary",
+      "label": "Secondary Building Materials Industry",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 196,
+      "name": "fastplace_building_materials_tertiary",
+      "label": "Tertiary Building Materials Industry",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 197,
+      "name": "fastplace_fisher",
+      "label": "Fishing",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 198,
+      "name": "fastplace_hunter",
+      "label": "Hunting",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 199,
+      "name": "fastplace_fish_meat_replenisher",
+      "label": "Fish/Meat Replenishing",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 200,
+      "name": "fastplace_well",
+      "label": "Well",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 201,
+      "name": "fastplace_farm_primary",
+      "label": "Primary Farm",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 202,
+      "name": "fastplace_farm_secondary",
+      "label": "Secondary Farm",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 203,
+      "name": "fastplace_mill",
+      "label": "Mill",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 204,
+      "name": "fastplace_bakery",
+      "label": "Bakery",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 205,
+      "name": "fastplace_brewery",
+      "label": "Brewery",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 206,
+      "name": "fastplace_smokery",
+      "label": "Smokery",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 207,
+      "name": "fastplace_tavern",
+      "label": "Tavern",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 208,
+      "name": "fastplace_smelting",
+      "label": "Ore Smelting",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 209,
+      "name": "fastplace_tool_smithy",
+      "label": "Tool Smithy",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 210,
+      "name": "fastplace_weapon_smithy",
+      "label": "Weapon Smithy",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 211,
+      "name": "fastplace_armor_smithy",
+      "label": "Armor Smithy",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 212,
+      "name": "fastplace_weaving_mill",
+      "label": "Weaving Mill",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 213,
+      "name": "fastplace_shipyard",
+      "label": "Shipyard",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 214,
+      "name": "fastplace_ferry_yard",
+      "label": "Ferry Yard",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 215,
+      "name": "fastplace_scout",
+      "label": "Scouting",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 216,
+      "name": "fastplace_barracks",
+      "label": "Barracks",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 217,
+      "name": "fastplace_second_carrier",
+      "label": "Second Carrier",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 218,
+      "name": "fastplace_charcoal",
+      "label": "Charcoal",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 219,
+      "name": "fastplace_mine_stone",
+      "label": "Stone Mine",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 220,
+      "name": "fastplace_mine_coal",
+      "label": "Coal Mine",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 221,
+      "name": "fastplace_mine_iron",
+      "label": "Iron Mine",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 222,
+      "name": "fastplace_mine_gold",
+      "label": "Gold Mine",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 223,
+      "name": "fastplace_agriculture_producer",
+      "label": "Agricultural Producer",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 224,
+      "name": "fastplace_agriculture_consumer_primary",
+      "label": "Primary Agricultural Consumer",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 225,
+      "name": "fastplace_agriculture_consumer_secondary",
+      "label": "Secondary Agricultural Consumer",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 226,
+      "name": "fastplace_industry_alternative",
+      "label": "Alternative Industry",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 227,
+      "name": "fastplace_industry_supporter",
+      "label": "Industry Support",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 228,
+      "name": "fastplace_terraforming",
+      "label": "Terraforming",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 229,
+      "name": "fastplace_custom_1",
+      "label": "Fastplace #1",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 230,
+      "name": "fastplace_custom_2",
+      "label": "Fastplace #2",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 231,
+      "name": "fastplace_custom_3",
+      "label": "Fastplace #3",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 232,
+      "name": "fastplace_custom_4",
+      "label": "Fastplace #4",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 233,
+      "name": "fastplace_custom_5",
+      "label": "Fastplace #5",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 234,
+      "name": "fastplace_custom_6",
+      "label": "Fastplace #6",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 235,
+      "name": "fastplace_custom_7",
+      "label": "Fastplace #7",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 236,
+      "name": "fastplace_custom_8",
+      "label": "Fastplace #8",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 237,
+      "name": "fastplace_custom_9",
+      "label": "Fastplace #9",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 238,
+      "name": "fastplace_custom_10",
+      "label": "Fastplace #10",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 239,
+      "name": "fastplace_custom_11",
+      "label": "Fastplace #11",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 240,
+      "name": "fastplace_custom_12",
+      "label": "Fastplace #12",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 241,
+      "name": "fastplace_custom_13",
+      "label": "Fastplace #13",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 242,
+      "name": "fastplace_custom_14",
+      "label": "Fastplace #14",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 243,
+      "name": "fastplace_custom_15",
+      "label": "Fastplace #15",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 244,
+      "name": "fastplace_custom_16",
+      "label": "Fastplace #16",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 245,
+      "name": "fastplace_custom_17",
+      "label": "Fastplace #17",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 246,
+      "name": "fastplace_custom_18",
+      "label": "Fastplace #18",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 247,
+      "name": "fastplace_custom_19",
+      "label": "Fastplace #19",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 248,
+      "name": "fastplace_custom_20",
+      "label": "Fastplace #20",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 249,
+      "name": "fastplace_custom_21",
+      "label": "Fastplace #21",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 250,
+      "name": "fastplace_custom_22",
+      "label": "Fastplace #22",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 251,
+      "name": "fastplace_custom_23",
+      "label": "Fastplace #23",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 252,
+      "name": "fastplace_custom_24",
+      "label": "Fastplace #24",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 253,
+      "name": "fastplace_custom_25",
+      "label": "Fastplace #25",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 254,
+      "name": "fastplace_custom_26",
+      "label": "Fastplace #26",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 255,
+      "name": "fastplace_custom_27",
+      "label": "Fastplace #27",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 256,
+      "name": "fastplace_custom_28",
+      "label": "Fastplace #28",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 257,
+      "name": "fastplace_custom_29",
+      "label": "Fastplace #29",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 258,
+      "name": "fastplace_custom_30",
+      "label": "Fastplace #30",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 259,
+      "name": "fastplace_custom_31",
+      "label": "Fastplace #31",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 260,
+      "name": "fastplace_custom_32",
+      "label": "Fastplace #32",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 261,
+      "name": "fastplace_custom_33",
+      "label": "Fastplace #33",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 262,
+      "name": "fastplace_custom_34",
+      "label": "Fastplace #34",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 263,
+      "name": "fastplace_custom_35",
+      "label": "Fastplace #35",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 264,
+      "name": "fastplace_custom_36",
+      "label": "Fastplace #36",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 265,
+      "name": "fastplace_custom_37",
+      "label": "Fastplace #37",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 266,
+      "name": "fastplace_custom_38",
+      "label": "Fastplace #38",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 267,
+      "name": "fastplace_custom_39",
+      "label": "Fastplace #39",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 268,
+      "name": "fastplace_custom_40",
+      "label": "Fastplace #40",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 269,
+      "name": "fastplace_custom_41",
+      "label": "Fastplace #41",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 270,
+      "name": "fastplace_custom_42",
+      "label": "Fastplace #42",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 271,
+      "name": "fastplace_custom_43",
+      "label": "Fastplace #43",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 272,
+      "name": "fastplace_custom_44",
+      "label": "Fastplace #44",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 273,
+      "name": "fastplace_custom_45",
+      "label": "Fastplace #45",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 274,
+      "name": "fastplace_custom_46",
+      "label": "Fastplace #46",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 275,
+      "name": "fastplace_custom_47",
+      "label": "Fastplace #47",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 276,
+      "name": "fastplace_custom_48",
+      "label": "Fastplace #48",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 277,
+      "name": "fastplace_custom_49",
+      "label": "Fastplace #49",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 278,
+      "name": "fastplace_custom_50",
+      "label": "Fastplace #50",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 279,
+      "name": "fastplace_custom_51",
+      "label": "Fastplace #51",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 280,
+      "name": "fastplace_custom_52",
+      "label": "Fastplace #52",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 281,
+      "name": "fastplace_custom_53",
+      "label": "Fastplace #53",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 282,
+      "name": "fastplace_custom_54",
+      "label": "Fastplace #54",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 283,
+      "name": "fastplace_custom_55",
+      "label": "Fastplace #55",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 284,
+      "name": "fastplace_custom_56",
+      "label": "Fastplace #56",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 285,
+      "name": "fastplace_custom_57",
+      "label": "Fastplace #57",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 286,
+      "name": "fastplace_custom_58",
+      "label": "Fastplace #58",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 287,
+      "name": "fastplace_custom_59",
+      "label": "Fastplace #59",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 288,
+      "name": "fastplace_custom_60",
+      "label": "Fastplace #60",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 289,
+      "name": "fastplace_custom_61",
+      "label": "Fastplace #61",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 290,
+      "name": "fastplace_custom_62",
+      "label": "Fastplace #62",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 291,
+      "name": "fastplace_custom_63",
+      "label": "Fastplace #63",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 292,
+      "name": "fastplace_custom_64",
+      "label": "Fastplace #64",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 293,
+      "name": "fastplace_custom_65",
+      "label": "Fastplace #65",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 294,
+      "name": "fastplace_custom_66",
+      "label": "Fastplace #66",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 295,
+      "name": "fastplace_custom_67",
+      "label": "Fastplace #67",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 296,
+      "name": "fastplace_custom_68",
+      "label": "Fastplace #68",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 297,
+      "name": "fastplace_custom_69",
+      "label": "Fastplace #69",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 298,
+      "name": "fastplace_custom_70",
+      "label": "Fastplace #70",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 299,
+      "name": "fastplace_custom_71",
+      "label": "Fastplace #71",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 300,
+      "name": "fastplace_custom_72",
+      "label": "Fastplace #72",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 301,
+      "name": "fastplace_custom_73",
+      "label": "Fastplace #73",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 302,
+      "name": "fastplace_custom_74",
+      "label": "Fastplace #74",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 303,
+      "name": "fastplace_custom_75",
+      "label": "Fastplace #75",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 304,
+      "name": "fastplace_custom_76",
+      "label": "Fastplace #76",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 305,
+      "name": "fastplace_custom_77",
+      "label": "Fastplace #77",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 306,
+      "name": "fastplace_custom_78",
+      "label": "Fastplace #78",
+      "scopes": 8,
+      "bound": false
+    },
+    {
+      "id": 307,
+      "name": "fastplace_custom_79",
+      "label": "Fastplace #79",
+      "scopes": 8,
+      "bound": false
+    }
+  ]
+}

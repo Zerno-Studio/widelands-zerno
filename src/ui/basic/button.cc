@@ -404,6 +404,7 @@ void Button::set_disable_style(UI::ButtonDisableStyle input_style) {
 }
 
 void Button::set_perm_pressed(bool pressed) {
+	toggle_control_ = true;
 	set_visual_state(pressed ? UI::Button::VisualState::kPermpressed :
 	                           UI::Button::VisualState::kRaised);
 }
@@ -417,6 +418,7 @@ inline const UI::ButtonStyleInfo& Button::button_style() const {
 }
 
 void Button::toggle() {
+	toggle_control_ = true;
 	switch (visual_state_) {
 	case UI::Button::VisualState::kRaised:
 		visual_state_ = UI::Button::VisualState::kPermpressed;

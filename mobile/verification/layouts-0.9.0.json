@@ -1,0 +1,98 @@
+[
+  {
+    "width": 960,
+    "height": 432,
+    "tab": "closed",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 960,
+    "height": 432,
+    "tab": "context",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 960,
+    "height": 432,
+    "tab": "commands",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 960,
+    "height": 432,
+    "tab": "help",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 1032,
+    "height": 792,
+    "tab": "closed",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 1032,
+    "height": 792,
+    "tab": "context",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 1032,
+    "height": 792,
+    "tab": "commands",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 1032,
+    "height": 792,
+    "tab": "help",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 549,
+    "height": 1280,
+    "tab": "closed",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 549,
+    "height": 1280,
+    "tab": "context",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 549,
+    "height": 1280,
+    "tab": "commands",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  },
+  {
+    "width": 549,
+    "height": 1280,
+    "tab": "help",
+    "overlaps": false,
+    "fill": true,
+    "footer": true
+  }
+]

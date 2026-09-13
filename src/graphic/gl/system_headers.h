@@ -33,7 +33,9 @@
 // TODO(sirver): glbinding seems to be a sane solution to the GL
 // loading problem. Switch to it everywhere. (https://github.com/hpicgs/glbinding).
 
-#ifdef USE_GLBINDING
+#if defined(__EMSCRIPTEN__)
+#include <GLES3/gl3.h>
+#elif defined(USE_GLBINDING)
 #include <glbinding/Binding.h>
 #include <glbinding/gl/gl.h>
 

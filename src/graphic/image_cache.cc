@@ -30,6 +30,16 @@
 
 ImageCache* g_image_cache;
 
+std::string ImageCache::image_name(const Image* image) {
+ if (!image) return "";
+ auto found = image_names_.find(image);
+ if (found != image_names_.end()) return found->second;
+ for (const auto& entry : images_) {
+  if (entry.second.get() == image) return image_names_[image] = entry.first;
+ }
+ return ""; // Generated images have no filesystem representation.
+}
+
 bool ImageCache::has(const std::string& hash) const {
 	return images_.count(hash) != 0u;
 }
@@ -61,6 +71,7 @@ void ImageCache::fill_with_texture_atlases(
 		outdated_images_.push_back(std::move(pair.second));
 	}
 	images_.clear();
+	image_names_.clear();
 	for (auto& pair : textures_in_atlas) {
 		images_.insert(std::move(pair));
 	}

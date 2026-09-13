@@ -1,0 +1,45 @@
+:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101b21;color:#eee5d2}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}[hidden]{display:none!important}#app{display:flex;width:100%;height:100dvh;overflow:hidden}#viewport{position:relative;flex:1;min-width:0;min-height:0;overflow:hidden}#canvas{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);touch-action:none;outline:none;max-width:100%;max-height:100%}
+button,input{font:inherit}button{color:inherit;min-height:48px;min-width:48px;border:1px solid #786544;border-radius:6px;background:#283235;touch-action:manipulation;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible,input:focus-visible{outline:2px solid #dfbd75;outline-offset:2px}button[aria-pressed=true],button[aria-expanded=true]{background:#66522d;color:#fff1c8;border-color:#c5a15a}button:disabled{opacity:.45;cursor:default}#controls{flex:0 0 48px;display:flex;align-items:center;background:#111e24}#more{width:48px;padding:8px 0;font-size:24px;border-right:0;border-radius:6px 0 0 6px}#more small{display:block;font-size:10px}#toolbox{flex:0 0 340px;max-width:55vw;overflow-y:auto;background:#1b272b;border-left:1px solid #84704c;padding:12px}#toolbox header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}#toolbox strong{font:24px Georgia,serif;color:#dfbd75}#context-label{display:block;color:#c9c3b4;font-size:12px;margin-top:4px}#close-tools{font-size:26px;background:none;border:0}.tabs{display:flex;gap:5px;margin-bottom:12px}.tabs button{flex:1;font-size:12px;padding:6px}#toolbox p{font-size:13px;line-height:1.45;color:#c9c3b4}#toolbox h3{font-size:16px;margin:16px 0 8px}#toolbox label{display:block;font-size:13px}#action-search{width:100%;min-height:48px;background:#111e24;color:#fff;border:1px solid #84704c;border-radius:5px;padding:8px;margin:8px 0}.all-scopes{display:flex!important;align-items:center;min-height:48px;gap:8px}.all-scopes input{width:22px;height:22px}.actions-list{display:grid;gap:7px}.actions-list button{text-align:left;padding:10px;line-height:1.3;overflow-wrap:anywhere}.actions-list small{display:block;color:#bcb7ac;font-size:11px;margin-top:4px}#toolbox footer{display:grid;gap:8px;border-top:1px solid #655b45;margin-top:16px;padding-top:12px}#modifiers,#scales{display:flex;gap:6px;margin:8px 0}#modifiers button,#scales button{flex:1}#clear-modifiers,#fullscreen{width:100%;margin:8px 0}#loading{position:fixed;inset:0;z-index:5;background:#101b21;display:grid;place-content:center;padding:24px;text-align:center}#loading h1{font:32px Georgia,serif;color:#dfbd75;margin:0 0 12px}#status{max-width:600px}#log{max-height:30vh;max-width:85vw;overflow:auto;text-align:left;font:11px monospace;white-space:pre-wrap;color:#a6b3b8}
+@media(orientation:portrait){#app{flex-direction:column}#controls{flex-basis:48px;justify-content:flex-end}#more{width:80px;font-size:18px;padding:0}#more small{display:inline;margin-left:5px}#toolbox{flex:0 0 48dvh;max-width:none;width:100%;border-top:1px solid #84704c;border-left:0}}
+
+#window-fields input{display:block;width:100%;height:48px;margin:7px 0 12px;background:#111e24;color:#fff;border:1px solid #84704c;border-radius:5px;padding:8px}
+
+/* Use the bundled game's textures, font and icon art, not replacement artwork. */
+#toolbox{height:calc(100% - var(--ime-inset,0px));background-color:#241e15;background-image:var(--game-panel);border-left:4px ridge #877455;padding:10px 12px;scrollbar-color:#8b7853 #201c14}
+#toolbox header{border-bottom:3px ridge #877455;padding-bottom:8px}
+#toolbox strong,#toolbox h3,#toolbox button{font-family:Widelands,'DejaVu Sans',sans-serif;font-weight:700}
+#toolbox strong,#toolbox h3{color:#ffff00;text-shadow:1px 1px #000}
+#context-label{color:#eee1bf;font-size:13px}
+#toolbox button{background-color:#252b19;background-image:var(--game-button);background-blend-mode:soft-light;border:2px outset #8d7954;border-radius:1px;color:#ffeb45;text-shadow:1px 1px #000}
+#toolbox button[aria-pressed=true]{background-color:#405523;border-style:inset;color:#ffff80}
+#toolbox button:disabled{color:#aaa;text-shadow:none}
+#toolbox .tabs button{padding:7px 4px;font-size:12px}
+#toolbox #close-tools{background:none;border:0;color:#e4d4ad}
+#toolbox .game-action{display:flex;align-items:center;gap:10px;font-size:14px;min-height:56px;padding:8px 10px}
+.action-icon{flex:0 0 28px;width:28px;height:28px;object-fit:contain;image-rendering:pixelated}
+.action-copy{flex:1;min-width:0;order:1}.action-state{order:2;min-width:24px;text-align:center;color:#e0e8a5}
+#toolbox .game-action small{font:12px/1.4 system-ui,sans-serif;color:#e2d9c3;text-shadow:none;margin-top:4px}
+#toolbox #window-fields input,#toolbox #action-search{background:#171b12;border:2px inset #8d7954;border-radius:0;color:#f2ecd9}
+#toolbox footer{border-top:3px ridge #877455}
+@media(orientation:portrait){#toolbox{height:auto;max-height:calc(100dvh - var(--ime-inset,0px) - 48px)}}
+
+/* Mini-map buttons center-crop a wide texture in the original renderer. */
+.action-icon.native-crop{object-fit:cover;object-position:center}
+
+/* The game owns the entire viewport. Actions is a movable native-style window. */
+#app{position:relative;display:block}
+#viewport{position:absolute;inset:0;width:100%;height:100%}
+#controls{position:absolute;right:8px;top:45%;bottom:auto;display:block;background:none;z-index:2}
+#more{width:52px;border:2px outset #877455;border-radius:2px;background:#292619;background-image:var(--game-button);color:#ffec48;font-size:22px}
+#more small{display:block;font-size:10px;margin:0}
+.actions-open #controls{visibility:hidden}
+#toolbox{position:absolute;z-index:3;top:8px;right:8px;bottom:auto;left:auto;flex:none;width:min(340px,calc(100% - 16px));max-width:calc(100% - 16px);height:min(640px,calc(100% - var(--ime-inset,0px) - 16px));max-height:calc(100% - var(--ime-inset,0px) - 16px);border:4px ridge #877455;box-shadow:0 4px 16px #0008;padding:0 8px 8px;overscroll-behavior:contain}
+#toolbox header{position:sticky;top:0;z-index:1;background:#302719;background-image:var(--game-panel);margin:0 -8px 8px;padding:0 6px 0 10px;min-height:48px;touch-action:none;user-select:none;cursor:move;border-bottom:3px ridge #877455}
+#toolbox strong{font-size:16px}#context-label{font-size:11px;margin-top:0}
+#toolbox #close-tools{min-width:48px;min-height:48px;font-size:26px;padding:0}
+#toolbox .tabs{gap:4px;margin-bottom:6px}#toolbox .tabs button{font-size:11px}
+#toolbox .game-action{min-height:48px;padding:6px 8px;font-size:13px}
+#toolbox .actions-list{gap:5px}#toolbox p{font-size:12px;margin:8px 0}
+@media(orientation:portrait){#toolbox{top:auto;bottom:72px;height:min(560px,55%);max-height:calc(100% - var(--ime-inset,0px) - 16px)}#controls{top:45%;right:8px;bottom:auto}}
+
+#toolbox header strong::before{content:'⠿ ';color:#b8a37c}
