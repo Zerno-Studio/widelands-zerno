@@ -237,6 +237,7 @@ does not establish completion of every tutorial/campaign or long-session testing
 ## Publication preparation — 2026-09-13
 
 Updated the public README to describe 0.11.0 rather than the old 0.2.0 controls.
-Zerno is a project name, not a registered legal entity. GitHub organization and
-Google Play Console enrollment are still pending; existing Chrome Web Store
-registration is separate. Existing APK/source downloads remain available.
+Zerno is a project name, not a registered legal entity. The source repository is published at https://github.com/STih07/widelands-zerno;
+a separate Zerno GitHub organization has not been created. The owner registered
+Google Play Console as Zerno Studio and reports that account verification is
+pending. Existing APK/source downloads remain available.
