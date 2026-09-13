@@ -272,3 +272,19 @@ suspended. Foreground output resumed with measured peak 0.0639190673828125.
 Physical device listening remains to be confirmed.
 
 APK SHA-256: `a215f98ecf314cd7c20827e1d8f7a511070fe678e7c7142f0a500718c68bb9f5`.
+
+
+## Android 0.14.0 — silent startup before the menu
+
+The 0.13 progress-window pause did not cover application startup. The upstream
+application starts intro music before graphics and resource initialization.
+The web build now omits that early playback. MainMenu's existing draw path starts
+menu music once the menu is visible. No paused intro track is left blocking
+splash completion; desktop startup behavior is unchanged.
+
+Normal-start Chromium check (not direct tutorial launch): audio context created
+at 7.334 s, 40 silent samples observed, first nonzero output at 16.772 s with native
+context `widelands_main_menu`, peak 0.0283203125. Audio remained running at the
+menu. Physical Android listening remains for the owner.
+
+APK SHA-256: `da739f1ad456d4d3f846bc1864b855bf46734412afa6fcb3f428aa241dd3d8ca`.

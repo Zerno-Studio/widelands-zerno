@@ -59,7 +59,7 @@ async function loadAssets(){
  message('Game filesystem ready; entering C++ main');
  Module.callMain(Module.arguments);
 }
-message('Build 0.13.0 / '+navigator.userAgent);
+message('Build 0.14.0 / '+navigator.userAgent);
 message('Initializing WASM before loading game assets');
 {const script=document.createElement('script');script.src='widelands.js';script.onerror=()=>failBoot('Cannot load game engine');document.body.append(script)}
 let frameSeen=false;

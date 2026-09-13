@@ -417,7 +417,12 @@ WLApplication::WLApplication(int const argc, char const* const* const argv)
 	g_sh = new SoundHandler();
 	g_sh->register_songs("music", Songset::kIntro);
 	g_sh->register_songs("music", Songset::kMenu);
+#ifndef __EMSCRIPTEN__
 	g_sh->change_music(get_config_bool("play_intro_music", true) ? Songset::kIntro : Songset::kMenu);
+#endif
+	// The web SDL mixer shares the loading thread. Keep startup silent; the
+	// first visible MainMenu::draw() starts menu music after initialization.
+	// Do not pause an intro track here: splash completion waits for its end.
 
 	g_gr = new Graphic();
 	g_gr->initialize(

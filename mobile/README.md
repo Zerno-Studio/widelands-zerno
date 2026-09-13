@@ -25,6 +25,7 @@ locally signed debug APK, not a Play Store release.
 * English; original sound effects and music are enabled in 0.12.0. Audio pauses
   during loading screens and while the app is in the background, then resumes. Game volume settings
   remain in control. Translated catalogs are excluded; all tribes, maps and campaigns remain.
+* Web startup is silent in 0.14.0; music starts when the main menu appears.
 * Version 0.11.0 adapts the logical viewport to the available display. A floating
   Actions overlay exposes native window actions, icons, tooltips and toggle states
   without resizing the game when opened or closed.
@@ -49,8 +50,8 @@ locally signed debug APK, not a Play Store release.
 
 ## Try it and verification
 
-[Android APK 0.13.0](https://zerno.stih07.com/downloads/widelands-zerno-0.13.0-a215f98e.apk)
-· [Corresponding source](https://zerno.stih07.com/downloads/widelands-zerno-0.13.0-source.tar.gz)
+[Android APK 0.14.0](https://zerno.stih07.com/downloads/widelands-zerno-0.14.0-da739f1a.apk)
+· [Corresponding source](https://zerno.stih07.com/downloads/widelands-zerno-0.14.0-source.tar.gz)
 · [Phone and Fold screenshots](https://zerno.stih07.com/downloads/widelands-0.11-preview.html)
 
 The owner reports comfortable tutorial gameplay in both folded phone and unfolded
