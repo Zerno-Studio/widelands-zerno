@@ -9,3 +9,9 @@ android/debug.keystore
 android/app/src/main/assets/
 
 build-*/
+
+# Generated directories can live on an external build volume.
+/www
+/stage
+/android/out
+/android/app/src/main/assets

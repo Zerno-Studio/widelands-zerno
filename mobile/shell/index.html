@@ -16,7 +16,7 @@
 const canvas=document.getElementById('canvas'),statusText=document.getElementById('status'),log=document.getElementById('log');
 function message(t){console.log(t);log.textContent=(log.textContent+'\n'+t).slice(-5000)}
 let bootFailed=false;
-window.Module={canvas,arguments:['--datadir=/data','--homedir=/home/widelands','--language=en','--nosound','--xres=1280','--yres=720'],preRun:[function(){FS.mkdirTree('/home/widelands');FS.mount(IDBFS,{autoPersist:true},'/home/widelands');addRunDependency('saved-games');FS.syncfs(true,e=>{if(e)message('Save storage unavailable: '+e);removeRunDependency('saved-games')})}],print:message,printErr:message,setStatus(t){statusText.textContent=t||'Starting Widelands…'},onAbort(e){bootFailed=true;document.getElementById('loading').style.display='grid';statusText.textContent='Startup failed';message(String(e))}};
+window.Module={canvas,arguments:['--datadir=/data','--homedir=/home/widelands','--language=en','--xres=1280','--yres=720'],preRun:[function(){FS.mkdirTree('/home/widelands');FS.mount(IDBFS,{autoPersist:true},'/home/widelands');addRunDependency('saved-games');FS.syncfs(true,e=>{if(e)message('Save storage unavailable: '+e);removeRunDependency('saved-games')})}],print:message,printErr:message,setStatus(t){statusText.textContent=t||'Starting Widelands…'},onAbort(e){bootFailed=true;document.getElementById('loading').style.display='grid';statusText.textContent='Startup failed';message(String(e))}};
 Module.mobileScale=5;
 try{const saved=Number(localStorage.getItem('widelands.uiScale'));if([4,5,6].includes(saved))Module.mobileScale=saved;}catch(e){}
 Module.mobileRegistryRequest=true;
@@ -59,9 +59,10 @@ async function loadAssets(){
  message('Game filesystem ready; entering C++ main');
  Module.callMain(Module.arguments);
 }
-message('Build 0.11.0 / '+navigator.userAgent);
+message('Build 0.12.0 / '+navigator.userAgent);
 message('Initializing WASM before loading game assets');
 {const script=document.createElement('script');script.src='widelands.js';script.onerror=()=>failBoot('Cannot load game engine');document.body.append(script)}
 let frameSeen=false;
 const loadingPoll=setInterval(()=>{if(!frameSeen&&log.textContent.includes('END GRAPHICS REPORT')){setTimeout(()=>{if(!bootFailed)document.getElementById('loading').style.display='none'},1500);frameSeen=true;clearInterval(loadingPoll)}},500);
-</script><script src="mobile-controls.js"></script></html>
+</script><script src="mobile-audio.js"></script>
+<script src="mobile-controls.js"></script></html>

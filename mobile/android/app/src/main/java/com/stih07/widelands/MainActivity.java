@@ -91,8 +91,8 @@ public class MainActivity extends Activity {
   else getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY|View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
  }
  @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)fullscreen();}
- @Override protected void onPause(){background=true;if(web!=null)web.evaluateJavascript(SAVE,result->{if(background&&web!=null)web.onPause();});super.onPause();}
- @Override protected void onResume(){super.onResume();background=false;if(web!=null){web.onResume();fullscreen();}}
+ @Override protected void onPause(){background=true;if(web!=null)web.evaluateJavascript("window.widelandsAudioBackground && window.widelandsAudioBackground(true);"+SAVE,result->{if(background&&web!=null)web.onPause();});super.onPause();}
+ @Override protected void onResume(){super.onResume();background=false;if(web!=null){web.onResume();web.evaluateJavascript("window.widelandsAudioBackground && window.widelandsAudioBackground(false);",null);fullscreen();}}
  @Override public void onBackPressed(){handleBack();}
  private void handleBack(){if(web==null){finish();return;}web.evaluateJavascript("window.widelandsBack && window.widelandsBack();",null);}
 

@@ -1,0 +1,105 @@
+{
+  "bytes": 510624609,
+  "fileCount": 20993,
+  "blocks": 32,
+  "largestBlock": 16771736,
+  "groups": {
+    "tribes": 233289058,
+    "music": 115726289,
+    "templates": 81796176,
+    "maps": 32740891,
+    "campaigns": 21555706,
+    "i18n": 18223699,
+    "sound": 3498784,
+    "world": 2738061,
+    "images": 740239,
+    "scripting": 213709,
+    "txts": 79105,
+    "ai": 16486,
+    "shaders": 6367,
+    "datadirversion": 39
+  },
+  "largestFiles": [
+    [
+      11846142,
+      "music/ingame_29.ogg"
+    ],
+    [
+      7289438,
+      "music/ingame_22.ogg"
+    ],
+    [
+      7149468,
+      "music/ingame_01.ogg"
+    ],
+    [
+      6317215,
+      "music/ingame_13.ogg"
+    ],
+    [
+      5990517,
+      "music/ingame_08.ogg"
+    ],
+    [
+      5553410,
+      "music/ingame_23.ogg"
+    ],
+    [
+      5177387,
+      "i18n/fonts/MicroHei/wqy-microhei.ttc"
+    ],
+    [
+      5109492,
+      "music/ingame_24.ogg"
+    ],
+    [
+      4433690,
+      "music/ingame_25.ogg"
+    ],
+    [
+      4376128,
+      "music/ingame_28.ogg"
+    ],
+    [
+      4320598,
+      "music/ingame_17.ogg"
+    ],
+    [
+      4259152,
+      "music/ingame_26.ogg"
+    ],
+    [
+      3900791,
+      "templates/default/loadscreens/gameloading/desert/raps.png"
+    ],
+    [
+      3754691,
+      "tribes/ships/empire/idle_4.png"
+    ],
+    [
+      3677204,
+      "music/ingame_00.ogg"
+    ],
+    [
+      3671493,
+      "tribes/ships/empire/sail_nw_4.png"
+    ],
+    [
+      3670649,
+      "tribes/ships/empire/sail_w_4.png"
+    ],
+    [
+      3614152,
+      "tribes/ships/empire/sail_e_4.png"
+    ],
+    [
+      3577210,
+      "music/ingame_16.ogg"
+    ],
+    [
+      3571071,
+      "music/ingame_05.ogg"
+    ]
+  ],
+  "note": "Bounded allocation, not lazy loading: all assets still mounted before main. No game content removed."
+}

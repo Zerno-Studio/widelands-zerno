@@ -4,7 +4,7 @@ root=Path(__file__).resolve().parents[1]
 stage=root/'mobile/stage/data'
 stage.mkdir(parents=True,exist_ok=True)
 for p in (root/'data').iterdir():
-    if p.name in ('i18n','music','.gitignore'): continue
+    if p.name in ('i18n','.gitignore'): continue
     dest=stage/p.name
     if p.is_dir(): shutil.copytree(p,dest,dirs_exist_ok=True)
     else: shutil.copy2(p,dest)

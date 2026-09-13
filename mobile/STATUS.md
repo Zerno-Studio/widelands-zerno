@@ -241,3 +241,17 @@ Zerno is a project name, not a registered legal entity. The source repository is
 a separate Zerno GitHub organization has not been created. The owner registered
 Google Play Console as Zerno Studio and reports that account verification is
 pending. Existing APK/source downloads remain available.
+
+
+## Android 0.12.0 — audio restored
+
+Removed `--nosound` and bundled the original music. SDL mixer settings remain
+unchanged. The Android lifecycle suspends/resumes its AudioContext; a touch can
+resume audio when browser autoplay rules require it.
+
+Chromium smoke check: mixer output peak 0.089111328125, background state
+`suspended`, foreground state `running`. This measures browser audio output;
+listening on a physical Android device remains for the owner. APK versionCode 12
+and signing certificate match the previous installation identity.
+
+APK SHA-256: `bf7a76d76b1f0f2006bbb0260719b3f57fe450e8becbf6665863ce4777dce32c`.

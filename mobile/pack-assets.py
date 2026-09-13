@@ -25,5 +25,5 @@ valid={p['url'] for p in parts}
 for p in www.glob('assets-*.bin'):
  if p.name not in valid:p.unlink()
 audit={'bytes':manifest['bytes'],'fileCount':len(largest),'blocks':len(parts),'largestBlock':max(p['bytes'] for p in parts),'groups':dict(groups.most_common()),'largestFiles':sorted(largest,reverse=True)[:20], 'note':'Bounded allocation, not lazy loading: all assets still mounted before main. No game content removed.'}
-(root/'verification/assets-0.9.0.json').write_text(json.dumps(audit,indent=2))
+(root/'verification/assets-0.12.0.json').write_text(json.dumps(audit,indent=2))
 print(json.dumps({k:audit[k] for k in ['bytes','fileCount','blocks','largestBlock']}))
