@@ -255,3 +255,20 @@ listening on a physical Android device remains for the owner. APK versionCode 12
 and signing certificate match the previous installation identity.
 
 APK SHA-256: `bf7a76d76b1f0f2006bbb0260719b3f57fe450e8becbf6665863ce4777dce32c`.
+
+
+## Android 0.13.0 — quiet loading transitions
+
+ProgressWindow lifetime signals the web audio bridge. AudioContext stays suspended
+while any progress window is active, and resumes 250 ms after the last one closes.
+Pointer gestures and foreground events do not override the loading pause. Volume
+preferences are unchanged. This avoids playing an underrunning main-thread SDL
+mixer during loading; it does not move the mixer to an audio worker.
+
+Chromium tutorial test observed native progress entry at 14.875 s, completion at
+30.708 s, suspended audio during loading, and running audio at the welcome dialog.
+Nested loading, touch during loading, and background-before-completion remained
+suspended. Foreground output resumed with measured peak 0.0639190673828125.
+Physical device listening remains to be confirmed.
+
+APK SHA-256: `a215f98ecf314cd7c20827e1d8f7a511070fe678e7c7142f0a500718c68bb9f5`.

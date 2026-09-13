@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.stih07.widelands" android:versionCode="12" android:versionName="0.12.0">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.stih07.widelands" android:versionCode="13" android:versionName="0.13.0">
  <uses-permission android:name="android.permission.INTERNET"/>
  <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="36"/>
  <uses-feature android:glEsVersion="0x00030000" android:required="true"/>

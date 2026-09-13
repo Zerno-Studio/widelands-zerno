@@ -25,6 +25,9 @@
 #endif
 
 #include <SDL_events.h>
+#ifdef __EMSCRIPTEN__
+#include <emscripten.h>
+#endif
 
 #include "base/i18n.h"
 #include "base/log.h"
@@ -59,6 +62,9 @@ ProgressWindow::ProgressWindow(UI::Panel* parent,
      label_center_(Vector2i::zero()),
      theme_(theme),
      crop_(crop) {
+	#ifdef __EMSCRIPTEN__
+	EM_ASM({ window.widelandsAudioLoading?.(1); });
+#endif
 	// As long as this window exists and is visible, no tooltips will be drawn.
 	set_hide_all_overlays();
 	Panel::set_allow_fastclick(false);
@@ -90,6 +96,9 @@ ProgressWindow::~ProgressWindow() {
 	}
 
 	Panel::set_allow_fastclick(true);
+#ifdef __EMSCRIPTEN__
+	EM_ASM({ window.widelandsAudioLoading?.(-1); });
+#endif
 }
 
 inline const UI::ProgressbarStyleInfo& ProgressWindow::progress_style() const {

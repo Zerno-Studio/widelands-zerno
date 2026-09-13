@@ -23,7 +23,7 @@ locally signed debug APK, not a Play Store release.
   loop with Emscripten Asyncify. Simulation keeps its 50 ms tick and original
   command queues; SDL yields to browser events between frames.
 * English; original sound effects and music are enabled in 0.12.0. Audio pauses
-  while the app is in the background and resumes on return. Game volume settings
+  during loading screens and while the app is in the background, then resumes. Game volume settings
   remain in control. Translated catalogs are excluded; all tribes, maps and campaigns remain.
 * Version 0.11.0 adapts the logical viewport to the available display. A floating
   Actions overlay exposes native window actions, icons, tooltips and toggle states
@@ -49,8 +49,8 @@ locally signed debug APK, not a Play Store release.
 
 ## Try it and verification
 
-[Android APK 0.12.0](https://zerno.stih07.com/downloads/widelands-zerno-0.12.0-bf7a76d7.apk)
-· [Corresponding source](https://zerno.stih07.com/downloads/widelands-zerno-0.12.0-source.tar.gz)
+[Android APK 0.13.0](https://zerno.stih07.com/downloads/widelands-zerno-0.13.0-a215f98e.apk)
+· [Corresponding source](https://zerno.stih07.com/downloads/widelands-zerno-0.13.0-source.tar.gz)
 · [Phone and Fold screenshots](https://zerno.stih07.com/downloads/widelands-0.11-preview.html)
 
 The owner reports comfortable tutorial gameplay in both folded phone and unfolded
