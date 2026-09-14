@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
    @Override public boolean onRenderProcessGone(WebView view,android.webkit.RenderProcessGoneDetail detail){
     ((android.view.ViewGroup)view.getParent()).removeView(view);web=null;view.destroy();
     android.content.pm.PackageInfo provider=WebView.getCurrentWebViewPackage();
-    String report="Widelands 0.11.0\nWebView: "+(provider==null?"unknown":provider.versionName)+
+    String report="Widelands "+appVersion()+"\nWebView: "+(provider==null?"unknown":provider.versionName)+
      "\nRenderer: "+(detail.didCrash()?"crashed":"terminated by Android (possibly memory pressure)")+"\n"+diagnostics;
     android.widget.TextView text=new android.widget.TextView(MainActivity.this);
     text.setText("Game renderer stopped. Save data has not been deleted.\n\n"+report);text.setTextIsSelectable(true);text.setPadding(24,24,24,24);
@@ -85,6 +85,7 @@ public class MainActivity extends Activity {
   });
   fullscreen();web.loadUrl("https://"+HOST+"/index.html");
  }
+ private String appVersion(){try{return getPackageManager().getPackageInfo(getPackageName(),0).versionName;}catch(Exception e){return "unknown";}}
  private WebResourceResponse missing(){return new WebResourceResponse("text/plain","UTF-8",404,"Not Found",Collections.emptyMap(),new ByteArrayInputStream(new byte[0]));}
  private void fullscreen(){
   if(Build.VERSION.SDK_INT>=30){WindowInsetsController c=getWindow().getInsetsController();if(c!=null){c.hide(WindowInsets.Type.systemBars());c.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);}}

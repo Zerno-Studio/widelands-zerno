@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+# Ubuntu ARM64 aapt2 predates the renamed sparse-encoding flag.
+import os,sys
+args=['--enable-sparse-encoding' if a=='--force-sparse-encoding' else a for a in sys.argv[1:]]
+os.execv('/usr/bin/aapt2',['aapt2']+args)

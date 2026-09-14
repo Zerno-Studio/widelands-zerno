@@ -288,3 +288,19 @@ context `widelands_main_menu`, peak 0.0283203125. Audio remained running at the
 menu. Physical Android listening remains for the owner.
 
 APK SHA-256: `da739f1ad456d4d3f846bc1864b855bf46734412afa6fcb3f428aa241dd3d8ca`.
+
+## Google Play preparation — 2026-09-14
+
+0.14.1 (15) keeps the 0.14.0 engine payload and adds an in-app privacy explanation,
+correct version reporting in native crash diagnostics, and a release AAB builder.
+The Android target remains API 36. The Play manifest disables debugging; the
+upload certificate is private and distinct from historical debug APKs.
+Game data is delivered as an install-time asset pack, using existing AssetManager
+access without a new Play SDK. bundletool 1.18.3 validation and split generation
+passed; all 44 web payload files match their hashes inside the AAB. Estimated
+compressed device download: 479,141,748 bytes maximum. No native .so libraries.
+AAB SHA-256: b5484dcd2a4ec28db269c10eacdd1af5b8ad8d514e93bbaf59a12d0578a57260.
+Google Play accepted this bundle into an internal-test draft. Production access
+requires the personal account's closed test (12 participants / 14 days).
+Actual Play installation and install-time asset availability on device remain
+pending. Do not erase a tester's local saves to switch from debug to Play signing.
